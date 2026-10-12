@@ -76,7 +76,7 @@
   "developer": "Brian Mayes",
   "feedback": "brian_mayes@me.com",
   "windows": {
-    "app": "MakerBridge 1.1.4 Beta for Windows",
+    "app": "MakerBridge 1.1.5 Beta for Windows",
     "date": "2026-10-12",
     "environment": "GitHub Actions windows-2022 (Windows Server 2022, x64), Python 3.13, default Windows text encoding",
     "slicers": {
@@ -92,8 +92,8 @@
       "not yet run on a tester's Windows PC",
       "Windows on ARM untested (x64 build, should run under emulation)",
       "unsigned: SmartScreen warning on first run",
-      "no drag-and-drop onto the window (use Open with, or click to choose)",
       "no physical print"
-    ]
+    ],
+    "dragAndDrop": "installed app sent a Windows file-drop message (WM_DROPFILES, as File Explorer produces) for a non-ASCII-named project; it loaded the project (checked automatically, screenshot kept). A physical mouse drag has not been tried."
   }
 }

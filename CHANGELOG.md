@@ -1,5 +1,12 @@
 # MakerBridge changelog
 
+## 1.1.5 Beta — October 2026
+
+- **Windows: drag and drop.** Drop a .3mf from File Explorer anywhere on the window to load it. It also works if MakerBridge was started as administrator. Dropping something other than a .3mf shows a message instead of loading it.
+- Windows license notes use US spelling.
+- Mac: unchanged. The Mac download is still the 1.1.3 app.
+- Validation: the automated Windows build sends the installed app the same message a File Explorer drop produces, and checks that it loads the dropped project. A drag with the mouse on a real PC hasn't been tried yet.
+
 ## 1.1.4 Beta — October 2026
 
 **MakerBridge for Windows.** Same converter and the same options as the Mac app, in both directions.

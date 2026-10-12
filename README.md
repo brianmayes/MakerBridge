@@ -1,4 +1,4 @@
-# MakerBridge 1.1.4 Beta — now for Mac and Windows
+# MakerBridge 1.1.5 Beta — for Mac and Windows
 
 A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The current version appears beside the app name and in About MakerBridge.
 
@@ -16,6 +16,10 @@ Ignore GitHub’s automatically generated **Source code** archives; they don’t
 To share with testers, send the [Releases page](https://github.com/brianmayes/MakerBridge/releases) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
 
 To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Windows-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
+
+## What's new in 1.1.5
+
+- **Drag and drop on Windows:** drop a .3mf from File Explorer anywhere on the MakerBridge window to load it, the same as on the Mac.
 
 ## What's new in 1.1.4
 
@@ -82,7 +86,7 @@ This beta is locally signed, but **not Apple Developer ID signed or notarized**.
 ### MakerWorld → U1
 
 1. Select **MakerWorld → U1**.
-2. Click to choose a downloaded MakerWorld print-profile `.3mf` (on a Mac you can also drop it onto the window).
+2. Drop a downloaded MakerWorld print-profile `.3mf` onto the window, or click to choose it.
 3. Check the colors and nozzle. For projects with more than four palette entries, choose **Plate to convert**; the displayed colors show the selected plate’s new toolhead mapping. Save other plates separately. Projects with up to four palette entries retain their original slots and all plates.
 4. Click **Convert & save U1 project** and choose a new filename.
 5. Open the result in **Snapmaker Orca**, review the plates, supports, filament assignments and temperatures, then slice and inspect the preview.
