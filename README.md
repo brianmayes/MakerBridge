@@ -8,14 +8,14 @@ A local app for Mac and Windows for converting editable 3MF projects in both dir
 
 MakerBridge is free to download and use. Get the app from [Releases](https://github.com/brianmayes/MakerBridge/releases). **No GitHub account, sign-in or invitation is needed to download.** The public repository is [brianmayes/MakerBridge](https://github.com/brianmayes/MakerBridge). Under the release's **Assets**, download:
 
-- **Mac:** `MakerBridge.zip`
-- **Windows:** `MakerBridge-Setup.exe` (recommended), or `MakerBridge-Windows.zip` if you'd rather not install anything
+- **Mac:** `MakerBridge-Mac.zip`
+- **Windows:** `MakerBridge-Windows-Setup.exe` (recommended), or `MakerBridge-Windows-Portable.zip` if you'd rather not install anything
 
 Ignore GitHub’s automatically generated **Source code** archives; they don’t contain the app.
 
 To share with testers, send the [Releases page](https://github.com/brianmayes/MakerBridge/releases) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
 
-To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
+To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Windows-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
 
 ## What's new in 1.1.4
 
@@ -67,15 +67,15 @@ Tested with **Snapmaker Orca 2.4.0** and **Bambu Studio 02.08.04.57**. Printer/n
 
 ### Windows
 
-1. Run **MakerBridge-Setup.exe**. Windows SmartScreen will say it "protected your PC" because the installer isn't code-signed yet: click **More info → Run anyway**.
+1. Run **MakerBridge-Windows-Setup.exe**. Windows SmartScreen will say it "protected your PC" because the installer isn't code-signed yet: click **More info → Run anyway**.
 2. Click through the installer. It installs for your user only, so no administrator password is needed.
 3. Open **MakerBridge** from the Start menu. You can also right-click a .3mf file and choose **Open with → MakerBridge**.
 
-Using `MakerBridge-Windows.zip` instead? Extract the whole folder first (right-click → **Extract All**), then run `MakerBridge.exe` inside it. It won't run from inside the zip.
+Using `MakerBridge-Windows-Portable.zip` instead? Extract the whole folder first (right-click → **Extract All**), then run `MakerBridge.exe` inside it. It won't run from inside the zip.
 
 ### Mac
 
-Unzip **MakerBridge.zip**, then double-click **MakerBridge.app**. Keep it in this folder or drag it to Applications. The app contains its conversion engine and runtime; the accompanying Licenses folder holds the runtime notices. To share this release, send the complete **MakerBridge.zip**.
+Unzip **MakerBridge-Mac.zip** (called `MakerBridge.zip` in releases before 1.1.4), then double-click **MakerBridge.app**. Keep it in this folder or drag it to Applications. The app contains its conversion engine and runtime; the accompanying Licenses folder holds the runtime notices. To share this release, send the complete **MakerBridge.zip**.
 
 This beta is locally signed, but **not Apple Developer ID signed or notarized**. macOS may require you to approve the first launch through System Settings → Privacy & Security → Open Anyway. Only approve a copy you trust.
 

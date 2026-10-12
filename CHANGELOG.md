@@ -4,7 +4,7 @@
 
 **MakerBridge for Windows.** Same converter and the same options as the Mac app, in both directions.
 
-- New Windows app (Windows 10/11, 64-bit): installer (`MakerBridge-Setup.exe`, per-user, no administrator prompt) or portable `MakerBridge-Windows.zip`. Adds MakerBridge to **Open with** for .3mf files without changing your default app.
+- New Windows app (Windows 10/11, 64-bit): installer (`MakerBridge-Windows-Setup.exe`, per-user, no administrator prompt) or portable `MakerBridge-Windows-Portable.zip`. Adds MakerBridge to **Open with** for .3mf files without changing your default app.
 - Finds Snapmaker Orca and Bambu Studio where their Windows installers put them. If a slicer lives somewhere else, **Choose folder…** remembers its location.
 - Engine fixes that matter on Windows and do not change Mac results: slicer profiles are read as UTF-8, paths inside the 3MF are always handled as forward-slash archive paths, and the converted file can be saved to drives without hard links (exFAT/FAT USB drives, some network shares) — still never replacing an existing file.
 - Mac: nothing changes in this release, so the Mac download stays MakerBridge 1.1.3. Conversions are identical with either engine.
