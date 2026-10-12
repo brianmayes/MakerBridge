@@ -15,7 +15,7 @@ Ignore GitHub’s automatically generated **Source code** archives; they don’t
 
 To share with testers, send the [Releases page](https://github.com/brianmayes/MakerBridge/releases) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
 
-To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically. [RELEASING.md](RELEASING.md) describes the development and release workflow.
+To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
 
 ## What's new in 1.1.4
 
