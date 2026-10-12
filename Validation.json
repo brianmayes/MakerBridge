@@ -1,0 +1,78 @@
+{
+  "app": "MakerBridge 1.1.3 Beta",
+  "date": "2026-10-11",
+  "releaseStatus": "Experimental prerelease",
+  "automatedTests": 54,
+  "automatedResult": "passed",
+  "warning": "The original reported 3MF was not supplied. This update may still have issues. Final U1 slicing of the experimental path is not verified; no physical print performed.",
+  "newCoverage": [
+    "plate selection and translated layout",
+    "shared components and repeated object instances",
+    "paint subdivision/extension codes and palette/color correspondence",
+    "support/part/process reference remapping",
+    "missing palette references rejected in both directions",
+    "five referenced colors rejected without output",
+    "unsupported custom layer data refused",
+    "Bambu filament-variant temperatures",
+    "original and existing output protection"
+  ],
+  "nativeValidation": {
+    "generatedModel": "Two plates, eight palette entries; red/green on plate 1, purple/brown on plate 2",
+    "BambuStudio": "02.08.04.57",
+    "method": "Bambu project \u2192 U1 selected plate \u2192 Bambu X1 Carbon \u2192 native CLI slice",
+    "results": [
+      {
+        "plate": 1,
+        "result": "passed",
+        "usedColors": [
+          "#23B541",
+          "#ED1717"
+        ],
+        "gcodeBytes": 381606
+      },
+      {
+        "plate": 2,
+        "result": "passed",
+        "usedColors": [
+          "#3A2222",
+          "#BA27D4"
+        ],
+        "gcodeBytes": 378537
+      }
+    ],
+    "U1Slice": "Not confirmed; prior Snapmaker CLI attempts crashed in GUI_App::filaments_cnt / PartPlate::get_extruders_under_cli."
+  },
+  "guiChecks": [
+    "1.1.3 Beta badge and app icon visible",
+    "generated eight-color project loaded",
+    "plate picker switched to plate 2 with purple/brown mapped to tools 1/2",
+    "save dialog included selected plate number",
+    "GUI output verified as one plate, correct colors and four U1 hardware nozzles"
+  ],
+  "limitations": [
+    "new plate selection only for MakerWorld \u2192 U1",
+    "up to four referenced filaments per selected plate including defaults and support assignments",
+    "experimental selection refuses custom layer profiles/ranges and 3MF material/texture resources",
+    "reverse remains up to four real filament slots",
+    "real customer file untested",
+    "clean second Mac untested",
+    "no physical print",
+    "not Developer ID signed or notarized"
+  ],
+  "bundledRuntime": {
+    "python": "3.13.16",
+    "architecture": "arm64",
+    "minimumMacOS": "13.0",
+    "externalPythonRequired": false,
+    "releaseChecks": [
+      "deep strict signature passed",
+      "frozen helper runs with no Python PATH",
+      "eight-color inspection and plate-2 U1 conversion passed",
+      "P2S reverse conversion passed",
+      "missing-palette input refused without output"
+    ]
+  },
+  "priorReleaseValidation": "1.1.2 native slicer results are historical and documented in README.md and CHANGELOG.md; not claimed as new 1.1.3 U1 slice results.",
+  "developer": "Brian Mayes",
+  "feedback": "brian_mayes@me.com"
+}

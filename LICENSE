@@ -1,0 +1,19 @@
+MakerBridge
+Copyright (c) 2026 Brian Mayes. All rights reserved.
+
+MakerBridge is free to download and use. You may share the unmodified
+MakerBridge.zip exactly as published on the official Releases page
+(https://github.com/brianmayes/MakerBridge/releases).
+
+Without written permission from Brian Mayes, you may not copy, modify,
+decompile, reverse engineer or extract the software or any part of it,
+redistribute modified versions, sell it, or use it to build another product.
+
+Third-party components bundled with MakerBridge (Python, OpenSSL and others)
+are provided under their own licenses; see the Licenses folder.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. Check every converted project in your slicer before printing. In no
+event shall the author be liable for any claim, damages or other liability,
+including damage to printers or failed prints, arising from the use of the
+software.
