@@ -86,7 +86,7 @@
     "automatedTests": 54,
     "automatedResult": "passed",
     "slicerDiscovery": "both found without configuration; versions read from the programs match the Mac app's format",
-    "builtAppSelfTest": "installed app's frozen engine: status both directions; inspect and convert 'Würfel – 4 colours.3mf' to U1, then to Bambu Lab A1 and X2D — all passed",
+    "builtAppSelfTest": "installed app's frozen engine: status both directions; inspect and convert 'Café cube – 4 colors.3mf' to U1, then to Bambu Lab A1 and X2D — all passed",
     "installer": "per-user silent install succeeded; window opened from Start-menu target and via a .3mf argument (screenshots)",
     "limitations": [
       "not yet run on a tester's Windows PC",
