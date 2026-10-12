@@ -1,5 +1,14 @@
 # MakerBridge changelog
 
+## 1.1.4 Beta — October 2026
+
+**MakerBridge for Windows.** Same converter and the same options as the Mac app, in both directions.
+
+- New Windows app (Windows 10/11, 64-bit): installer (`MakerBridge-Setup.exe`, per-user, no administrator prompt) or portable `MakerBridge-Windows.zip`. Adds MakerBridge to **Open with** for .3mf files without changing your default app.
+- Finds Snapmaker Orca and Bambu Studio where their Windows installers put them. If a slicer lives somewhere else, **Choose folder…** remembers its location.
+- Engine fixes that matter on Windows and do not change Mac results: slicer profiles are read as UTF-8, paths inside the 3MF are always handled as forward-slash archive paths, and the converted file can be saved to drives without hard links (exFAT/FAT USB drives, some network shares) — still never replacing an existing file.
+- Mac: nothing changes in this release, so the Mac download stays MakerBridge 1.1.3. Conversions are identical with either engine.
+- Validation on GitHub's Windows Server 2022 machines with Snapmaker Orca 2.4.0 and Bambu Studio 02.08.04.57 installed by their own installers: both slicers found automatically, 54 automated checks pass, and the installed app converted a non-ASCII-named project to U1 and back to Bambu A1 and X2D. Not yet tried on a tester's Windows PC; no physical print.
 ## 1.1.3 Beta — October 11, 2026
 
 **Experimental color update: may still have issues until the original reported 3MF can be tested. A complete U1 slice of the new path is not verified.**

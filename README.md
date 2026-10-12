@@ -1,16 +1,28 @@
-# MakerBridge 1.1.3 Beta — Experimental color update
+# MakerBridge 1.1.4 Beta — now for Mac and Windows
 
-A local Mac app for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The current version appears beside the app name and in About MakerBridge.
+A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The current version appears beside the app name and in About MakerBridge.
 
-**Free beta software · Developed by Brian Mayes.** Feedback and bug reports: [brian_mayes@me.com](mailto:brian_mayes@me.com). Please include your MakerBridge version, macOS version, slicer version, printer/nozzle choice and any error message.
+**Free beta software · Developed by Brian Mayes.** Feedback and bug reports: [brian_mayes@me.com](mailto:brian_mayes@me.com). Please include your MakerBridge version, macOS or Windows version, slicer version, printer/nozzle choice and any error message.
 
 ## Download and updates
 
-MakerBridge is free to download and use. Get the app from [Releases](https://github.com/brianmayes/MakerBridge/releases), or open the [1.1.3 experimental beta download page](https://github.com/brianmayes/MakerBridge/releases/tag/v1.1.3). **No GitHub account, sign-in or invitation is needed to download.** The public repository is [brianmayes/MakerBridge](https://github.com/brianmayes/MakerBridge). Download **MakerBridge.zip** under the release assets. Ignore GitHub’s automatically generated **Source code** archives; they don’t contain the app.
+MakerBridge is free to download and use. Get the app from [Releases](https://github.com/brianmayes/MakerBridge/releases). **No GitHub account, sign-in or invitation is needed to download.** The public repository is [brianmayes/MakerBridge](https://github.com/brianmayes/MakerBridge). Under the release's **Assets**, download:
 
-To share with testers, send the [release page](https://github.com/brianmayes/MakerBridge/releases/tag/v1.1.3) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
+- **Mac:** `MakerBridge.zip`
+- **Windows:** `MakerBridge-Setup.exe` (recommended), or `MakerBridge-Windows.zip` if you'd rather not install anything
 
-Updates are installed by quitting MakerBridge, downloading the new release ZIP, unzipping it and replacing the old app. The app does not yet download or install updates automatically. [RELEASING.md](RELEASING.md) describes the development and release workflow.
+Ignore GitHub’s automatically generated **Source code** archives; they don’t contain the app.
+
+To share with testers, send the [Releases page](https://github.com/brianmayes/MakerBridge/releases) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
+
+To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically. [RELEASING.md](RELEASING.md) describes the development and release workflow.
+
+## What's new in 1.1.4
+
+- **MakerBridge for Windows** (Windows 10/11, 64-bit), with the same converter and options as the Mac app in both directions.
+- The Windows installer is per-user (no administrator prompt) and adds MakerBridge to **Open with** for .3mf files without changing your default app.
+- Engine fixes for Windows that don't change Mac results. See [CHANGELOG.md](CHANGELOG.md).
+- **Mac:** nothing changed, so the Mac download is still the 1.1.3 app and shows 1.1.3 in its badge. That's expected.
 
 ## What changed in 1.1.3
 
@@ -36,7 +48,8 @@ See [CHANGELOG.md](CHANGELOG.md) for the release history.
 
 ## What you need
 
-- An **Apple silicon Mac (M1 or newer)** running **macOS 13 Ventura or later**. This build does not support Intel Macs or Windows.
+- **Mac:** Apple silicon (M1 or newer), macOS 13 Ventura or later. Intel Macs aren't supported.
+- **Windows:** Windows 10 or 11, 64-bit.
 - The destination slicer for the conversion you want to make:
 
 | Conversion | Required slicer |
@@ -44,13 +57,23 @@ See [CHANGELOG.md](CHANGELOG.md) for the release history.
 | MakerWorld / Bambu Studio → Snapmaker U1 | [**Snapmaker Orca**](https://www.snapmaker.com/snapmaker-orca), with U1 printer profiles |
 | Snapmaker U1 → Bambu / MakerWorld | [**Bambu Studio**](https://bambulab.com/en/download/studio), with your chosen Bambu printer/nozzle profiles |
 
-**Install both slicers only if you want both conversion directions.** The source slicer is not needed just to convert an existing compatible 3MF. Install the Mac applications in **Applications** (your user Applications folder is also supported). MakerBridge reads native printer, process and material profiles from the installed destination slicer; the slicer does not need to be running during conversion.
+**Install both slicers only if you want both conversion directions.** The source slicer is not needed just to convert an existing compatible 3MF. On a Mac, install them in **Applications** (your user Applications folder is also supported). On Windows, install them normally; if a slicer lives somewhere unusual (a portable copy, another drive), click **Choose folder…** at the bottom of MakerBridge and pick the folder that contains it. MakerBridge reads native printer, process and material profiles from the installed destination slicer; the slicer does not need to be running during conversion.
 
 Tested with **Snapmaker Orca 2.4.0** and **Bambu Studio 02.08.04.57**. Printer/nozzle choices depend on profiles available in your installed version. Use Snapmaker Orca for U1 exports; Snapmaker Luban and the general OrcaSlicer app are not substitutes for this build's profile lookup.
 
-**Python is included inside MakerBridge.app. You do not need to install Python, Xcode or developer tools to run this version.** The slicers are separate downloads and are not included.
+**Python is included inside MakerBridge. You don't need to install Python or any developer tools.** The slicers are separate downloads and are not included.
 
 ## Start
+
+### Windows
+
+1. Run **MakerBridge-Setup.exe**. Windows SmartScreen will say it "protected your PC" because the installer isn't code-signed yet: click **More info → Run anyway**.
+2. Click through the installer. It installs for your user only, so no administrator password is needed.
+3. Open **MakerBridge** from the Start menu. You can also right-click a .3mf file and choose **Open with → MakerBridge**.
+
+Using `MakerBridge-Windows.zip` instead? Extract the whole folder first (right-click → **Extract All**), then run `MakerBridge.exe` inside it. It won't run from inside the zip.
+
+### Mac
 
 Unzip **MakerBridge.zip**, then double-click **MakerBridge.app**. Keep it in this folder or drag it to Applications. The app contains its conversion engine and runtime; the accompanying Licenses folder holds the runtime notices. To share this release, send the complete **MakerBridge.zip**.
 
@@ -59,7 +82,7 @@ This beta is locally signed, but **not Apple Developer ID signed or notarized**.
 ### MakerWorld → U1
 
 1. Select **MakerWorld → U1**.
-2. Drop a downloaded MakerWorld print-profile `.3mf` onto the window, or click to choose it.
+2. Click to choose a downloaded MakerWorld print-profile `.3mf` (on a Mac you can also drop it onto the window).
 3. Check the colors and nozzle. For projects with more than four palette entries, choose **Plate to convert**; the displayed colors show the selected plate’s new toolhead mapping. Save other plates separately. Projects with up to four palette entries retain their original slots and all plates.
 4. Click **Convert & save U1 project** and choose a new filename.
 5. Open the result in **Snapmaker Orca**, review the plates, supports, filament assignments and temperatures, then slice and inspect the preview.

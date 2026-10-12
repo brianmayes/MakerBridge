@@ -19,7 +19,7 @@
   "nativeValidation": {
     "generatedModel": "Two plates, eight palette entries; red/green on plate 1, purple/brown on plate 2",
     "BambuStudio": "02.08.04.57",
-    "method": "Bambu project \u2192 U1 selected plate \u2192 Bambu X1 Carbon \u2192 native CLI slice",
+    "method": "Bambu project → U1 selected plate → Bambu X1 Carbon → native CLI slice",
     "results": [
       {
         "plate": 1,
@@ -50,7 +50,7 @@
     "GUI output verified as one plate, correct colors and four U1 hardware nozzles"
   ],
   "limitations": [
-    "new plate selection only for MakerWorld \u2192 U1",
+    "new plate selection only for MakerWorld → U1",
     "up to four referenced filaments per selected plate including defaults and support assignments",
     "experimental selection refuses custom layer profiles/ranges and 3MF material/texture resources",
     "reverse remains up to four real filament slots",
@@ -74,5 +74,26 @@
   },
   "priorReleaseValidation": "1.1.2 native slicer results are historical and documented in README.md and CHANGELOG.md; not claimed as new 1.1.3 U1 slice results.",
   "developer": "Brian Mayes",
-  "feedback": "brian_mayes@me.com"
+  "feedback": "brian_mayes@me.com",
+  "windows": {
+    "app": "MakerBridge 1.1.4 Beta for Windows",
+    "date": "2026-10-12",
+    "environment": "GitHub Actions windows-2022 (Windows Server 2022, x64), Python 3.13, default Windows text encoding",
+    "slicers": {
+      "SnapmakerOrca": "2.4.0 (official Windows installer, silent install to C:\\Program Files\\Snapmaker_Orca)",
+      "BambuStudio": "02.08.04.57 (official Windows installer, silent install to C:\\Program Files\\Bambu Studio)"
+    },
+    "automatedTests": 54,
+    "automatedResult": "passed",
+    "slicerDiscovery": "both found without configuration; versions read from the programs match the Mac app's format",
+    "builtAppSelfTest": "installed app's frozen engine: status both directions; inspect and convert 'Würfel – 4 colours.3mf' to U1, then to Bambu Lab A1 and X2D — all passed",
+    "installer": "per-user silent install succeeded; window opened from Start-menu target and via a .3mf argument (screenshots)",
+    "limitations": [
+      "not yet run on a tester's Windows PC",
+      "Windows on ARM untested (x64 build, should run under emulation)",
+      "unsigned: SmartScreen warning on first run",
+      "no drag-and-drop onto the window (use Open with, or click to choose)",
+      "no physical print"
+    ]
+  }
 }
