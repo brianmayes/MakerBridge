@@ -154,7 +154,7 @@ Your original is never overwritten. Existing output files are protected too: cho
 
 **1.1.6:** 61 automated checks pass on the development Mac, including percentage-width conversion at project, object/part and layer-range levels, larger nozzles, malformed values, first-layer policies and native-default mode. Four generated projects saved by Creality Print / Anycubic Slicer Next passed 16 archive conversion checks. Bambu Studio 02.08.04.57 sliced all eight plates from the corrected P1S outputs, using all four model colors. No physical print was performed. See [COMPATIBILITY.md](COMPATIBILITY.md) and `Validation.json`.
 
-Windows builds run the same suite against installed destination slicers and verify the frozen app's width conversion for A1 and X2D, installer launch and file drop. The release notes link the build result. Windows native-slicer previews and a separate tester's PC are not covered by these automated checks.
+Windows builds run the same suite against installed destination slicers and verify the frozen app's width conversion for A1 and X2D, installer launch and file drop. The release notes summarize the completed build checks. Windows native-slicer previews and a separate tester's PC are not covered by these automated checks.
 
 
 **1.1.3:** the rebuilt GUI loaded an eight-color, two-plate generated project, switched to plate 2 and saved its purple/brown regions as toolheads 1/2. Both generated plates passed Bambu Studio slicing after conversion to U1 and back to Bambu. This validates the retained color assignments, not a final U1 toolpath. No original tester file or physical print was tested. The app ZIP is checked after extraction with the bundled Python runtime and no external Python on PATH.

@@ -7,7 +7,7 @@
 - Refuse malformed/non-finite/negative values in retained width settings before creating an output. Native process mode keeps destination global widths and still translates retained object/range overrides.
 - First-layer default/model choices, regular layer heights, plate-bed inheritance and color handling are unchanged.
 - Documented **experimental Creality Print and Anycubic Slicer Next inputs**, using MakerWorld → U1. No direct Creality/Anycubic destination or direct-to-Bambu mode was added. Older Anycubic Slicer variants are not covered.
-- Mac validation: 61 automated tests, 16 archive checks on four vendor-saved generated projects, and successful native Bambu slices of all eight converted plates. Windows builds run the same suite plus frozen-engine, installation and file-drop checks; see the release's build link. No physical print or broad printer compatibility claim. Details: `COMPATIBILITY.md`.
+- Mac validation: 61 automated tests, 16 archive checks on four vendor-saved generated projects, and successful native Bambu slices of all eight converted plates. Windows builds run the same suite plus frozen-engine, installation and file-drop checks; see the completed results in the release notes. No physical print or broad printer compatibility claim. Details: `COMPATIBILITY.md`.
 
 ## 1.1.5 Beta — October 2026
 

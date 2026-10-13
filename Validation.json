@@ -23,7 +23,11 @@
       "per-user installer and window launch",
       "Windows file-drop message loads the project"
     ],
-    "resultLocation": "The release notes link the successful build; selftest.json and screenshots are in its MakerBridge-Windows artifact. No Windows execution was performed on the development Mac."
+    "resultLocation": "Completed results are summarized in the public release notes. Detailed logs, selftest.json and screenshots are retained by the maintainer.",
+    "automatedTests": 61,
+    "automatedResult": "passed",
+    "frozenEngineResult": "passed; both directions, corrected A1/X2D widths, non-ASCII paths",
+    "installerAndDropResult": "passed"
   },
   "compatibilityDetails": "COMPATIBILITY.md",
   "limitations": [
