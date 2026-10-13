@@ -1,4 +1,4 @@
-# MakerBridge 1.1.5 Beta — for Mac and Windows
+# MakerBridge 1.1.6 Beta — for Mac and Windows
 
 A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The current version appears beside the app name and in About MakerBridge.
 
@@ -17,6 +17,13 @@ To share with testers, send the [Releases page](https://github.com/brianmayes/Ma
 
 To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Windows-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
 
+## What's new in 1.1.6
+
+- **Mac and Windows are both 1.1.6.** Python and the conversion engine remain included; install only the destination slicer separately.
+- Fixed U1 → Bambu exports interpreting Orca percentage-based skin/skeleton infill widths as millimeters. For example, `100%` becomes `0.4 mm` for a matching 0.4 mm nozzle. Global, object/part and layer-range settings are handled and reported. Existing absolute widths remain unchanged.
+- First-layer choices, regular layer heights, plate bed inheritance, color preservation and Windows drag and drop remain available.
+- **Experimental input compatibility:** selected Creality Print 7.3.0.6157 and Anycubic Slicer Next 2.0.0.3 projects have converted successfully using the **MakerWorld → U1** tab. These are additional input sources, not new destination slicers. See [COMPATIBILITY.md](COMPATIBILITY.md) for tested cases and limits.
+
 ## What's new in 1.1.5
 
 - **Drag and drop on Windows:** drop a .3mf from File Explorer anywhere on the MakerBridge window to load it, the same as on the Mac.
@@ -26,7 +33,7 @@ To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and
 - **MakerBridge for Windows** (Windows 10/11, 64-bit), with the same converter and options as the Mac app in both directions.
 - The Windows installer is per-user (no administrator prompt) and adds MakerBridge to **Open with** for .3mf files without changing your default app.
 - Engine fixes for Windows that don't change Mac results. See [CHANGELOG.md](CHANGELOG.md).
-- **Mac:** nothing changed, so the Mac download is still the 1.1.3 app and shows 1.1.3 in its badge. That's expected.
+- **At the time of 1.1.4/1.1.5:** the Mac download remained at 1.1.3. Both platforms advance to 1.1.6 in this release.
 
 ## What changed in 1.1.3
 
@@ -79,7 +86,7 @@ Using `MakerBridge-Windows-Portable.zip` instead? Extract the whole folder first
 
 ### Mac
 
-Unzip **MakerBridge-Mac.zip** (called `MakerBridge.zip` in releases before 1.1.4), then double-click **MakerBridge.app**. Keep it in this folder or drag it to Applications. The app contains its conversion engine and runtime; the accompanying Licenses folder holds the runtime notices. To share this release, send the complete **MakerBridge.zip**.
+Unzip **MakerBridge-Mac.zip** (called `MakerBridge.zip` in releases before 1.1.4), then double-click **MakerBridge.app**. Keep it in this folder or drag it to Applications. The app contains its conversion engine and runtime; the accompanying Licenses folder holds the runtime notices. To share this release, send the complete **MakerBridge-Mac.zip**.
 
 This beta is locally signed, but **not Apple Developer ID signed or notarized**. macOS may require you to approve the first launch through System Settings → Privacy & Security → Open Anyway. Only approve a copy you trust.
 
@@ -128,7 +135,7 @@ Leave **Keep compatible print settings** enabled to retain compatible global pro
 - Source machine/filament G-code hooks, sliced G-code, embedded presets and custom per-layer G-code are replaced or removed. Recreate required pauses in the destination slicer. Triangle color painting is retained.
 - **Save report…** exports the embedded conversion report, including changed settings, removed files and the source checksum. The report also lives in `Metadata/makerbridge-report.json` inside the output.
 
-Your original is never overwritten. Existing output files are protected too: choose a new filename. Conversion runs on your Mac without uploads, accounts, a local web server or network requests.
+Your original is never overwritten. Existing output files are protected too: choose a new filename. Conversion runs on your computer without uploads, accounts, a local web server or network requests.
 
 ## Compatibility and limits
 
@@ -145,9 +152,14 @@ Your original is never overwritten. Existing output files are protected too: cho
 
 ## Validation
 
+**1.1.6:** 61 automated checks pass on the development Mac, including percentage-width conversion at project, object/part and layer-range levels, larger nozzles, malformed values, first-layer policies and native-default mode. Four generated projects saved by Creality Print / Anycubic Slicer Next passed 16 archive conversion checks. Bambu Studio 02.08.04.57 sliced all eight plates from the corrected P1S outputs, using all four model colors. No physical print was performed. See [COMPATIBILITY.md](COMPATIBILITY.md) and `Validation.json`.
+
+Windows builds run the same suite against installed destination slicers and verify the frozen app's width conversion for A1 and X2D, installer launch and file drop. The release notes link the build result. Windows native-slicer previews and a separate tester's PC are not covered by these automated checks.
+
+
 **1.1.3:** the rebuilt GUI loaded an eight-color, two-plate generated project, switched to plate 2 and saved its purple/brown regions as toolheads 1/2. Both generated plates passed Bambu Studio slicing after conversion to U1 and back to Bambu. This validates the retained color assignments, not a final U1 toolpath. No original tester file or physical print was tested. The app ZIP is checked after extraction with the bundled Python runtime and no external Python on PATH.
 
-**54 automated checks pass**, including experimental plate selection, shared instances, nested painting, missing color references, support assignments, source protection and variant filament temperatures. Existing checks cover covering source protection, geometry/painting, global and object settings, plate transforms, unsupported inputs, U1 support/nozzle regressions, all 14 Bambu targets, dual-nozzle variant groups, H2C hotends, tower origin, per-color temperature preservation through a round trip, both first-layer modes in both directions, independent print-setting controls, first-layer overrides, nozzle-specific defaults, older U1 quality preset names and per-plate bed inheritance.
+**The 1.1.3 release passed 54 automated checks**, including experimental plate selection, shared instances, nested painting, missing color references, support assignments, source protection and variant filament temperatures. Existing checks cover covering source protection, geometry/painting, global and object settings, plate transforms, unsupported inputs, U1 support/nozzle regressions, all 14 Bambu targets, dual-nozzle variant groups, H2C hotends, tower origin, per-color temperature preservation through a round trip, both first-layer modes in both directions, independent print-setting controls, first-layer overrides, nozzle-specific defaults, older U1 quality preset names and per-plate bed inheritance.
 
 **Earlier releases’ bundled runtime passed relocation checks** from a folder containing spaces, with the build-time Python made unavailable and Python search paths disabled. Both conversion directions, H2C/X2D round trips, four colors, geometry preservation and file protection passed. All 48 native binaries link only to bundled libraries or macOS system libraries. The GUI also loaded and saved a four-color U1 conversion using the bundled engine. These checks were performed on the development Mac; a separate clean Mac has not yet been tested.
 
@@ -159,7 +171,7 @@ Earlier native GUI validation in **Snapmaker Orca 2.4.0** covered a two-plate sa
 
 ## How it works
 
-The interface uses SwiftUI/AppKit; the conversion engine is a self-contained helper inside the app. Runtime notices are in `Licenses/` and inside the app. Actual printer, material and process values are loaded from your installed slicers at conversion time.
+The Mac interface uses SwiftUI/AppKit and the Windows interface uses Tk; the conversion engine is a self-contained helper inside the app. Runtime notices are in `Licenses/` and inside the app. Actual printer, material and process values are loaded from your installed slicers at conversion time.
 
 Format behavior was checked against the official [Snapmaker OrcaSlicer source](https://github.com/Snapmaker/OrcaSlicer) and [Bambu Studio source](https://github.com/bambulab/BambuStudio). Installed slicer profiles remain under their original licenses and are not redistributed. MakerBridge is an independent local utility, not an official Bambu Lab, MakerWorld or Snapmaker product.
 

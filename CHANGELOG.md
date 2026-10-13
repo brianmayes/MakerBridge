@@ -1,5 +1,14 @@
 # MakerBridge changelog
 
+## 1.1.6 Beta — October 13, 2026
+
+- Updated **both Mac and Windows** to the same conversion engine and version. Bundled Python/runtime, existing installer behavior and Windows drag and drop remain included.
+- Fixed percentage-based `skin_infill_line_width` and `skeleton_infill_line_width` being read as enormous millimeter widths by Bambu Studio. Translate using the matching nozzle diameter (`100%` → `0.4 mm` on a 0.4 mm nozzle) in project settings, object/part metadata and layer-range overrides. Preserve existing absolute widths and record translations in the conversion report.
+- Refuse malformed/non-finite/negative values in retained width settings before creating an output. Native process mode keeps destination global widths and still translates retained object/range overrides.
+- First-layer default/model choices, regular layer heights, plate-bed inheritance and color handling are unchanged.
+- Documented **experimental Creality Print and Anycubic Slicer Next inputs**, using MakerWorld → U1. No direct Creality/Anycubic destination or direct-to-Bambu mode was added. Older Anycubic Slicer variants are not covered.
+- Mac validation: 61 automated tests, 16 archive checks on four vendor-saved generated projects, and successful native Bambu slices of all eight converted plates. Windows builds run the same suite plus frozen-engine, installation and file-drop checks; see the release's build link. No physical print or broad printer compatibility claim. Details: `COMPATIBILITY.md`.
+
 ## 1.1.5 Beta — October 2026
 
 - **Windows: drag and drop.** Drop a .3mf from File Explorer anywhere on the window to load it. It also works if MakerBridge was started as administrator. Dropping something other than a .3mf shows a message instead of loading it.
