@@ -1,4 +1,4 @@
-# MakerBridge 1.1.6 Beta — for Mac and Windows
+# MakerBridge 1.1.7 Beta — for Mac and Windows
 
 A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The current version appears beside the app name and in About MakerBridge.
 
@@ -16,6 +16,14 @@ Ignore GitHub’s automatically generated **Source code** archives; they don’t
 To share with testers, send the [Releases page](https://github.com/brianmayes/MakerBridge/releases) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
 
 To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Windows-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
+
+## What's new in 1.1.7
+
+- **Keep all plates when extra filament slots are unused.** MakerBridge checks model painting, object/part assignments, supports and layer-range overrides across the project. If four or fewer slots are referenced, unused slots are removed and every plate stays in the output. No used colors are merged.
+- This fixes five-plate projects with five saved filament slots but only three assigned filaments being forced into single-plate export. The app shows the retained filaments and records the mapping in its conversion report.
+- Custom layer profiles and range overrides remain available in this all-plate path because object/instance IDs stay unchanged. Local assembly-part transforms are preserved when translating plates.
+- If the whole project actually references more than four filaments, the existing experimental single-plate picker and its limits still apply. Mixed/virtual filaments and 3MF material/texture resources are not automatically compacted.
+- Mac and Windows use the same engine. Bundled Python, first-layer choices, bed inheritance and the 1.1.6 width-unit fix remain included.
 
 ## What's new in 1.1.6
 
@@ -39,7 +47,7 @@ To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and
 
 **Experimental — this update may still have issues. We have not received the original reported 3MF. Generated models were tested, but a complete U1 slice of the new plate/color path is not yet verified. Review all colors, supports and the sliced preview before printing.**
 
-- Projects with more than four palette entries can now be converted **one selected plate at a time** to U1, if the selected plate references at most four filaments.
+- In 1.1.3–1.1.6, projects with more than four palette entries could be converted **one selected plate at a time** to U1, if the selected plate references at most four filaments.
 - Color numbers above four are remapped together with triangle painting and object/part/support assignments. For example, original colors 5 and 8 become toolheads 1 and 2 without changing their assigned colors.
 - Missing palette references are rejected in both conversion directions, instead of producing a misleading preservation report.
 - The experimental path stops for custom layer-height profiles/layer-range overrides, virtual/mixed filaments, or 3MF material/texture resources. Export the desired plate separately in Bambu Studio for these cases. Object defaults and support assignments count conservatively toward the four-filament limit, even when they might not produce toolpaths.

@@ -1,6 +1,6 @@
 # Bundled runtime notices
 
-MakerBridge 1.1.6 Beta is developed by Brian Mayes. Feedback: brian_mayes@me.com.
+MakerBridge 1.1.7 Beta is developed by Brian Mayes. Feedback: brian_mayes@me.com.
 
 The Mac app includes CPython 3.13.16 and the required standard-library modules, packaged for Apple silicon using PyInstaller 6.22.3. The runtime was obtained from the Python Software Foundation's official macOS installer:
 

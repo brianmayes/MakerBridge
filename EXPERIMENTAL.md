@@ -1,10 +1,16 @@
-# Experimental color conversion in 1.1.3
+# Multi-plate color handling and experimental plate selection
 
 **This beta may still have issues until we can test the original reported 3MF.** The tests used generated cube models, not the tester's commercial file. A successful conversion does not establish that the final U1 toolpath is correct. A complete U1 slice of the new path has not been verified.
 
-## What to try
+## All-plate conversion in 1.1.7
 
-Open a MakerWorld/Bambu project with more than four palette entries. Choose **Plate to convert**, check the displayed colors, and save a new U1 project. Each output contains only that plate. Repeat for other plates. In Snapmaker Orca, check the colored model, toolhead assignments, supports and every relevant part of the sliced preview before printing.
+A palette may contain unused material slots. MakerBridge now checks references across the entire archive first. When four or fewer real filaments are referenced, it removes only unused slots and keeps **all plates**. This includes references in painted faces, object/part settings, supports and layer-range overrides. Custom layer profiles remain intact because object and instance numbering does not change. The conversion report lists the original slots and their U1 toolhead mapping.
+
+This path was tested with a locally supplied five-plate project using three of five saved filament slots and with synthetic remapping/range/variant tests. That file is separate from the original greater-than-four-used-color report discussed below. Mixed/virtual definitions and 3MF material/texture resources are not automatically compacted.
+
+## What to try when more than four filaments are actually referenced
+
+Open a MakerWorld/Bambu project that references more than four filaments across its plates. Choose **Plate to convert**, check the displayed colors, and save a new U1 project. Each output contains only that plate. Repeat for other plates. In Snapmaker Orca, check the colored model, toolhead assignments, supports and every relevant part of the sliced preview before printing.
 
 For example, a project may use red/green on plate 1 and purple/brown from slots 5/8 on plate 2. Selecting plate 2 exports purple/brown as tools 1/2, with the paint references remapped accordingly. Four physical U1 nozzles remain configured. This feature does not add more than four simultaneous physical filaments.
 
@@ -20,7 +26,7 @@ The original file is never overwritten. Keep it for comparison. Older 1.1.2 down
 
 ## Checks completed
 
-54 automated tests pass, including source protection, shared component/instance handling, selected-plate transforms, nested paint encoding, color correspondence, support/part references, variant filament temperatures and missing-palette rejection in both directions. The rebuilt GUI successfully selected and saved plate 2 from a synthetic eight-color project.
+The original 1.1.3 release passed 54 automated tests, including source protection, shared component/instance handling, selected-plate transforms, nested paint encoding, color correspondence, support/part references, variant filament temperatures and missing-palette rejection in both directions. The rebuilt GUI successfully selected and saved plate 2 from a synthetic eight-color project.
 
 Both synthetic plates sliced successfully in Bambu Studio after U1 conversion and a reverse conversion to Bambu. Their toolpaths retained the expected red/green and purple/brown materials. These are Bambu slices, not final U1 slices. Prior Snapmaker CLI attempts crashed in its filament-count/plate path; GUI import showed the prototype's correct colors, but a final U1 slice remains unconfirmed.
 

@@ -1,5 +1,12 @@
 # MakerBridge changelog
 
+## 1.1.7 Beta — October 14, 2026
+
+- Fixed unused saved filament slots forcing a multi-plate Bambu project into single-plate export. When the whole project references at most four real filaments, preserve every plate and compact only unused slots. Keep painting, object/part/support/range references and matching filament tuning together; do not merge colors.
+- Preserve custom layer profiles and range overrides in this all-plate path. Keep the existing experimental single-plate behavior when more than four filaments are actually referenced, including its existing unsupported-input limits.
+- Preserve volume-local assembly transforms while translating plate-level instances to the destination bed layout.
+- Added five synthetic regression tests; all 66 automated tests passed on Mac. Reproduced the five-plate/three-used-slot case using a locally supplied project. Personal models are not bundled or uploaded. See Validation.json and the release notes for packaged-build checks.
+
 ## 1.1.6 Beta — October 13, 2026
 
 - Updated **both Mac and Windows** to the same conversion engine and version. Bundled Python/runtime, existing installer behavior and Windows drag and drop remain included.
