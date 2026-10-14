@@ -1,5 +1,12 @@
 # MakerBridge changelog
 
+## 1.1.8 Beta — October 14, 2026
+
+- Clarified supported input slicers inside both Mac and Windows apps. The forward tab is now **3MF → U1**, with a persistent **Compatible inputs** card listing MakerWorld / Bambu Studio and experimental Creality Print / Anycubic Slicer Next.
+- Updated the subtitle, drop area, file chooser and error guidance for editable project 3MFs. Older Anycubic Slicer is explicitly excluded.
+- Conversion behavior, including 1.1.7 all-plate preservation, remains unchanged. This is a wording/interface update, not a broader compatibility claim.
+- Validation: 66 automated checks passed on each platform, packaged conversion checks passed, and the new card was visually checked in empty and loaded states on Mac and Windows. Windows installation and file-drop checks passed.
+
 ## 1.1.7 Beta — October 14, 2026
 
 - Fixed unused saved filament slots forcing a multi-plate Bambu project into single-plate export. When the whole project references at most four real filaments, preserve every plate and compact only unused slots. Keep painting, object/part/support/range references and matching filament tuning together; do not merge colors.

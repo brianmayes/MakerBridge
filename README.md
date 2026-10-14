@@ -1,6 +1,6 @@
-# MakerBridge 1.1.7 Beta — for Mac and Windows
+# MakerBridge 1.1.8 Beta — for Mac and Windows
 
-A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The current version appears beside the app name and in About MakerBridge.
+A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The **3MF → U1** tab also accepts compatible editable projects from **Creality Print** and **Anycubic Slicer Next** as experimental inputs. Older Anycubic Slicer variants are not supported. The current version appears beside the app name and in About MakerBridge.
 
 **Free beta software · Developed by Brian Mayes.** Feedback and bug reports: [brian_mayes@me.com](mailto:brian_mayes@me.com). Please include your MakerBridge version, macOS or Windows version, slicer version, printer/nozzle choice and any error message.
 
@@ -16,6 +16,12 @@ Ignore GitHub’s automatically generated **Source code** archives; they don’t
 To share with testers, send the [Releases page](https://github.com/brianmayes/MakerBridge/releases) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
 
 To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Windows-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
+
+## What's new in 1.1.8
+
+- Renamed the forward tab to **3MF → U1** on Mac and Windows.
+- Added a visible **Compatible inputs** card naming MakerWorld / Bambu Studio and experimental Creality Print / Anycubic Slicer Next inputs. The card stays visible when a project is loaded and is specific to the U1 direction.
+- Updated file prompts and guidance to say editable project 3MF. This update clarifies existing compatibility; conversion behavior and the 1.1.7 multi-plate fix are unchanged.
 
 ## What's new in 1.1.7
 
@@ -73,7 +79,7 @@ See [CHANGELOG.md](CHANGELOG.md) for the release history.
 
 | Conversion | Required slicer |
 | --- | --- |
-| MakerWorld / Bambu Studio → Snapmaker U1 | [**Snapmaker Orca**](https://www.snapmaker.com/snapmaker-orca), with U1 printer profiles |
+| 3MF → U1: MakerWorld / Bambu Studio; experimental Creality Print / Anycubic Slicer Next | [**Snapmaker Orca**](https://www.snapmaker.com/snapmaker-orca), with U1 printer profiles |
 | Snapmaker U1 → Bambu / MakerWorld | [**Bambu Studio**](https://bambulab.com/en/download/studio), with your chosen Bambu printer/nozzle profiles |
 
 **Install both slicers only if you want both conversion directions.** The source slicer is not needed just to convert an existing compatible 3MF. On a Mac, install them in **Applications** (your user Applications folder is also supported). On Windows, install them normally; if a slicer lives somewhere unusual (a portable copy, another drive), click **Choose folder…** at the bottom of MakerBridge and pick the folder that contains it. MakerBridge reads native printer, process and material profiles from the installed destination slicer; the slicer does not need to be running during conversion.
@@ -98,10 +104,10 @@ Unzip **MakerBridge-Mac.zip** (called `MakerBridge.zip` in releases before 1.1.4
 
 This beta is locally signed, but **not Apple Developer ID signed or notarized**. macOS may require you to approve the first launch through System Settings → Privacy & Security → Open Anyway. Only approve a copy you trust.
 
-### MakerWorld → U1
+### 3MF → U1
 
-1. Select **MakerWorld → U1**.
-2. Drop a downloaded MakerWorld print-profile `.3mf` onto the window, or click to choose it.
+1. Select **3MF → U1**.
+2. Drop an editable MakerWorld / Bambu Studio project `.3mf` onto the window, or click to choose it. Creality Print and Anycubic Slicer Next projects use this same tab, with experimental compatibility; see [COMPATIBILITY.md](COMPATIBILITY.md).
 3. Check the colors and nozzle. For projects with more than four palette entries, choose **Plate to convert**; the displayed colors show the selected plate’s new toolhead mapping. Save other plates separately. Projects with up to four palette entries retain their original slots and all plates.
 4. Click **Convert & save U1 project** and choose a new filename.
 5. Open the result in **Snapmaker Orca**, review the plates, supports, filament assignments and temperatures, then slice and inspect the preview.
@@ -159,6 +165,8 @@ Your original is never overwritten. Existing output files are protected too: cho
 - The bundled app is Apple silicon only. Python 3.13.16 and its required libraries travel with the app; it does not use a system Python installation.
 
 ## Validation
+
+**1.1.8:** All 66 automated checks passed on Mac and Windows. Reviewed the new compatibility card in both platforms’ empty and loaded states, and verified Mac reverse-direction guidance. Packaged checks passed in both directions; Windows installation and file-drop checks passed. No new native-slicer or physical-print testing was performed for this interface update.
 
 **1.1.6:** 61 automated checks pass on the development Mac, including percentage-width conversion at project, object/part and layer-range levels, larger nozzles, malformed values, first-layer policies and native-default mode. Four generated projects saved by Creality Print / Anycubic Slicer Next passed 16 archive conversion checks. Bambu Studio 02.08.04.57 sliced all eight plates from the corrected P1S outputs, using all four model colors. No physical print was performed. See [COMPATIBILITY.md](COMPATIBILITY.md) and `Validation.json`.
 

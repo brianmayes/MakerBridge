@@ -1,8 +1,8 @@
-# Experimental slicer inputs — MakerBridge 1.1.6 Beta
+# Experimental slicer inputs — MakerBridge
 
 Developed by Brian Mayes. Feedback: brian_mayes@me.com.
 
-Creality Print and Anycubic Slicer Next can supply compatible editable 3MF projects to **MakerWorld → U1**. Install Snapmaker Orca for the destination profiles. Bambu Studio remains required for **U1 → Bambu / MakerWorld**; direct conversion from these vendors to Bambu is not offered.
+Creality Print and Anycubic Slicer Next can supply compatible editable 3MF projects to **3MF → U1** (called **MakerWorld → U1** before 1.1.8). Install Snapmaker Orca for the destination profiles. Bambu Studio remains required for **U1 → Bambu / MakerWorld**; direct conversion from these vendors to Bambu is not offered.
 
 | Input application tested | Source printer/nozzle | Samples |
 | --- | --- | --- |
