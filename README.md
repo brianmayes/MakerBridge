@@ -1,21 +1,30 @@
-# MakerBridge 1.1.8 Beta — for Mac and Windows
+# MakerBridge 1.2.2 Beta — for Mac and Windows
 
 A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The **3MF → U1** tab also accepts compatible editable projects from **Creality Print** and **Anycubic Slicer Next** as experimental inputs. Older Anycubic Slicer variants are not supported. The current version appears beside the app name and in About MakerBridge.
 
-**Free beta software · Developed by Brian Mayes.** Feedback and bug reports: [brian_mayes@me.com](mailto:brian_mayes@me.com). Please include your MakerBridge version, macOS or Windows version, slicer version, printer/nozzle choice and any error message.
+**Free beta software · Developed by Brian Mayes.** Feedback and bug reports: [hello@printroomhq.com](mailto:hello@printroomhq.com). Please include your MakerBridge version, macOS or Windows version, slicer version, printer/nozzle choice and any error message.
 
 ## Download and updates
 
-MakerBridge is free to download and use. Get the app from [Releases](https://github.com/brianmayes/MakerBridge/releases). **No GitHub account, sign-in or invitation is needed to download.** The public repository is [brianmayes/MakerBridge](https://github.com/brianmayes/MakerBridge). Under the release's **Assets**, download:
+Download MakerBridge from **[printroomhq.com/makerbridge](https://printroomhq.com/makerbridge/)**. It's free, and no account or sign-in is needed.
 
-- **Mac:** `MakerBridge-Mac.zip`
-- **Windows:** `MakerBridge-Windows-Setup.exe` (recommended), or `MakerBridge-Windows-Portable.zip` if you'd rather not install anything
+- **Mac:** MakerBridge-Mac.zip
+- **Windows:** MakerBridge-Windows-Setup.exe (recommended), or MakerBridge-Windows-Portable.zip if you'd rather not install anything
 
-Ignore GitHub’s automatically generated **Source code** archives; they don’t contain the app.
+The page lists SHA-256 checksums for every download. Releases on GitHub stop at 1.1.8; newer versions are only on printroomhq.com.
 
-To share with testers, send the [Releases page](https://github.com/brianmayes/MakerBridge/releases) so they see the experimental warning and installation instructions. For future release notifications, testers with a GitHub account can select **Watch → Custom → Releases** on the repository and save. Testers without accounts can check the Releases page for updates.
+From 1.2.0 on, MakerBridge checks printroomhq.com for a new version when it opens, or when you click **Check for updates** at the bottom of the window. When one is out, a bar offers **Update**: the Mac app replaces itself and reopens; on Windows it downloads the installer, reinstalls for the current user and reopens. Every update must carry the publisher's signature and match its signed size and SHA-256. The check sends only the app version, Mac or Windows, and a random ID for that copy. To update by hand, download the new version from the website: on a Mac, replace the old app; on Windows, run the new MakerBridge-Windows-Setup.exe.
 
-To update on a Mac, quit MakerBridge, download the new release ZIP, unzip it and replace the old app. On Windows, run the new `MakerBridge-Windows-Setup.exe`; it updates the installed copy. The app does not yet download or install updates automatically.
+## What's new in 1.2.2
+
+- **Variable layer heights on one plate.** Converting one plate of a bigger project now keeps that plate's custom layer heights, height-range modifiers (including a color change partway up), brim ears and cut info, renumbered for the new file. Before, those projects stopped and Combine colors couldn't be used on them.
+- The update check now sends the app version, Mac or Windows, and a random ID made on first launch, so active copies can be counted by version. Nothing about you or your files is sent.
+
+## What's new in 1.2.1
+
+- **Combine colors.** When a plate uses more than four colors, MakerBridge lists them with roughly how much of the printed surface each covers and suggests which ones to print with another color's toolhead: the least-used color goes to the closest remaining color until four are left. Change any choice from its dropdown, or click **Use suggestion** to go back. Combined colors keep their painting; they print in the kept color.
+- The conversion report and the review notes list every combined color, its surface share and the toolhead that prints it.
+- One-plate projects no longer show the plate picker.
 
 ## What's new in 1.1.8
 
@@ -108,7 +117,7 @@ This beta is locally signed, but **not Apple Developer ID signed or notarized**.
 
 1. Select **3MF → U1**.
 2. Drop an editable MakerWorld / Bambu Studio project `.3mf` onto the window, or click to choose it. Creality Print and Anycubic Slicer Next projects use this same tab, with experimental compatibility; see [COMPATIBILITY.md](COMPATIBILITY.md).
-3. Check the colors and nozzle. For projects with more than four palette entries, choose **Plate to convert**; the displayed colors show the selected plate’s new toolhead mapping. Save other plates separately. Projects with up to four palette entries retain their original slots and all plates.
+3. Check the colors and nozzle. For projects with more than four palette entries, choose **Plate to convert**; the displayed colors show the selected plate’s new toolhead mapping. Save other plates separately. If the plate itself uses more than four colors, choose which ones to **combine** (MakerBridge suggests the least-used ones). Projects with up to four palette entries retain their original slots and all plates.
 4. Click **Convert & save U1 project** and choose a new filename.
 5. Open the result in **Snapmaker Orca**, review the plates, supports, filament assignments and temperatures, then slice and inspect the preview.
 
@@ -157,7 +166,7 @@ Your original is never overwritten. Existing output files are protected too: cho
 - Source and target nozzle sizes must match. The app does not redesign extrusion widths for another nozzle diameter.
 - Sliced-only `.gcode.3mf`, generic geometry-only 3MF, Cura and PrusaSlicer projects are not supported.
 - Textured PEI Plate is selected initially. All plates inherit the global bed selection; change it in the destination slicer to match your actual bed. Review temperatures and material suitability.
-- Variable layer profiles are retained in ordinary conversion; experimental plate selection currently refuses them. For U1 exports, enabled Organic/default tree supports become Tree Slim when variable layer profiles or layer-height ranges would cause Orca's unsupported combination. Global and object/part overrides are checked. Other explicit support styles remain unchanged; the report lists adjustments.
+- Variable layer profiles and height ranges are retained in ordinary conversion and, from 1.2.2, in plate selection, where only the selected plate's objects keep theirs. For U1 exports, enabled Organic/default tree supports become Tree Slim when variable layer profiles or layer-height ranges would cause Orca's unsupported combination. Global and object/part overrides are checked. Other explicit support styles remain unchanged; the report lists adjustments.
 - U1 exports use the lowercase standard-flow settings for all four toolheads, fixing the earlier `nozzle_volume_type` warning.
 - Bambu prime towers start near the lower-left of each plate, inside the area reachable by every target nozzle. Their final size depends on the slice. Move or rearrange as needed to avoid overlaps; smaller beds may require splitting a plate.
 - MakerBridge does not check mesh bounds, prime-tower collisions or toolpath collisions, resize oversized parts, or send jobs to a printer. Destination-slicer review remains necessary.

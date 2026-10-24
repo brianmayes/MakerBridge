@@ -1,202 +1,262 @@
 {
-  "app": "MakerBridge 1.1.8 Beta",
-  "date": "2026-10-14",
+  "app": "MakerBridge 1.2.2 Beta",
+  "date": "2026-10-24",
   "developer": "Brian Mayes",
-  "feedback": "brian_mayes@me.com",
+  "feedback": "hello@printroomhq.com",
   "releaseStatus": "Beta",
-  "scope": "Mac and Windows input-source wording and guidance only; conversion logic unchanged from 1.1.7",
+  "scope": "Plate selection keeps per-object layer files (variable layer heights, height ranges, brim ears, cut info), renumbered for the selected plate; update check sends version, platform and a random install ID for active-copy counts.",
   "mac": {
-    "automatedTests": 66,
-    "automatedResult": "passed",
-    "gui": "Verified new tab, source card, editable-project chooser, loaded-project card and reverse-direction guidance in the rebuilt 1.1.8 app",
-    "packagedRuntime": "Extracted ZIP passed deep/strict signature verification; bundled engine passed U1 and P1S conversions with external Python disabled, preserving five plates and compacting unused slots",
-    "localApp": "Updated local Mac app and verified the 1.1.8 version badge and compatible-inputs card"
+    "automatedTests": 81,
+    "automatedResult": "passed (76 previous + 5 per-object layer file tests + 1 update check test)",
+    "testProject": "Two-plate H2D project built from the tester's six-color helmet plus a 30 x 30 x 40 mm block, with a variable layer-height profile and a height-range color change; block listed second in the build (object 2 → 1 after selection)",
+    "nativeBambuSlice": "Passed: block plate reverse-converted to P1S sliced in Bambu Studio with the variable profile (415 layers; 200 without it) and the range color from 20.07 to 30.07 mm; helmet plate (green and gray combined into black) sliced with its 0–6 mm height range kept",
+    "nativeU1Slice": "Not verified: Snapmaker Orca 2.4.0 command-line slicer still crashes (segfault) on this Mac"
   },
   "windows": {
-    "automatedTests": 66,
-    "automatedResult": "passed",
-    "frozenEngineResult": "passed: both directions, five-plate unused-slot preservation, A1/X2D width units and non-ASCII file paths",
+    "automatedTests": 81,
+    "automatedResult": "passed against installed Snapmaker Orca 2.4.0 and Bambu Studio 02.08.04.57 (GitHub Actions run 40054727055)",
+    "frozenEngineResult": "passed: both directions, non-ASCII paths",
     "installerAndDropResult": "passed",
-    "gui": "Reviewed Windows build screenshots: 1.1.8 badge, renamed tab and compatible-inputs card visible in empty and loaded states",
-    "resultLocation": "Completed Windows build and package checks are summarized in the public release notes."
+    "updateResult": "passed: installed app found a signed update on a local server, downloaded and verified it, reinstalled quietly and reopened"
   },
   "compatibilityDetails": "COMPATIBILITY.md",
   "limitations": [
+    "No native U1 slice or physical print of the test project",
+    "Combined colors print in the kept color; no more than four physical filaments",
     "Creality Print and Anycubic Slicer Next inputs remain experimental",
-    "Older Anycubic Slicer not supported",
-    "No new native slicing or physical print validation in this UI update",
     "Destination slicers installed separately"
   ],
   "previousReleaseValidation": {
-    "app": "MakerBridge 1.1.7 Beta",
-    "date": "2026-10-14",
+    "app": "MakerBridge 1.2.1 Beta",
+    "date": "2026-10-23",
     "developer": "Brian Mayes",
-    "feedback": "brian_mayes@me.com",
+    "feedback": "hello@printroomhq.com",
     "releaseStatus": "Beta",
+    "scope": "Combine colors: plates with more than four colors can be converted by printing the least-used colors with another color's toolhead. Mac and Windows UI; engine, report and CLI (--combine).",
     "mac": {
-      "automatedTests": 66,
-      "automatedResult": "passed",
-      "case": "Locally supplied five-plate Bambu project with five saved filament slots and three referenced slots; all five plates retained.",
-      "nativeU1Import": "Snapmaker Orca 2.4.0 displayed all five populated plates; prime-tower proximity warning remains.",
-      "nativeU1Slice": "Not verified: installed Snapmaker command-line slicer crashes; imported layout was inspected in the GUI.",
-      "nativeBambuSlice": "Passed: all five synthetic round-trip P1S plates sliced in Bambu Studio 02.08.04.57",
-      "packagedRuntime": "Extracted ZIP passed deep/strict signature verification; frozen engine passed both directions with external Python disabled"
+      "automatedTests": 76,
+      "automatedResult": "passed (71 previous + 5 combine-color tests)",
+      "testerProject": "Tester-supplied six-color H2D helmet (one plate, 122,772 triangles): suggested merges green (0.8%) and gray (<0.1%) into black; converted to a four-color U1 project",
+      "nativeU1Slice": "Not verified: Snapmaker Orca 2.4.0 command-line slicer crashes (segfault) on this Mac, as in earlier releases",
+      "nativeBambuSlice": "Passed: U1 output reverse-converted to P1S sliced in Bambu Studio with all four colors, 673 layers",
+      "ui": "Mac app loaded the tester project and showed the Combine colors panel with suggested choices; Windows (Tk) panel checked in a Linux render, including re-pointing a color with others riding on it",
+      "packagedRuntime": "Built app passed deep/strict signature verification; bundled engine inspected the tester project with external Python disabled"
     },
     "windows": {
-      "requiredChecks": [
-        "66 automated tests",
-        "frozen engine with five plates and unused filament slots",
-        "A1/X2D width units and both conversion directions",
-        "per-user installation and file drop"
-      ],
-      "resultLocation": "Completed build results are summarized in release notes.",
-      "automatedTests": 66,
-      "automatedResult": "passed",
-      "frozenEngineResult": "passed: five plates, unused slots, both directions, A1/X2D widths, non-ASCII paths",
-      "installerAndDropResult": "passed"
+      "automatedTests": 76,
+      "automatedResult": "passed against installed Snapmaker Orca 2.4.0 and Bambu Studio (GitHub Actions run 39935810849)",
+      "frozenEngineResult": "passed: both directions, non-ASCII paths",
+      "installerAndDropResult": "passed",
+      "updateResult": "passed: installed app found a signed update on a local server, downloaded and verified it, reinstalled quietly and reopened",
+      "ui": "Combine colors panel checked in a Tk render of the tester project; the CI run covers the ordinary color list"
     },
+    "compatibilityDetails": "COMPATIBILITY.md",
     "limitations": [
-      "A whole project using more than four filaments still uses experimental single-plate selection",
-      "Mixed/virtual filaments and 3MF material/texture resources are not automatically compacted",
-      "No physical print performed",
-      "Unsigned beta distribution; slicers installed separately"
+      "Surface shares are estimates: painted sub-triangles count equally",
+      "Combined colors print in the kept color; no more than four physical filaments",
+      "No native U1 slice or physical print of the tester project",
+      "Creality Print and Anycubic Slicer Next inputs remain experimental",
+      "Destination slicers installed separately"
     ],
     "previousReleaseValidation": {
-      "app": "MakerBridge 1.1.6 Beta",
-      "date": "2026-10-13",
+      "app": "MakerBridge 1.2.0 Beta",
+      "date": "2026-10-21",
       "developer": "Brian Mayes",
-      "feedback": "brian_mayes@me.com",
-      "releaseStatus": "Beta; additional slicer imports experimental",
+      "feedback": "hello@printroomhq.com",
+      "releaseStatus": "Beta",
+      "scope": "In-app updates from printroomhq.com on Mac and Windows; feedback address. Conversion logic unchanged from 1.1.8.",
       "mac": {
-        "automatedTests": 61,
-        "automatedResult": "passed",
-        "archiveConversionChecks": 16,
-        "archiveResult": "passed",
-        "nativeBambuStudio": "02.08.04.57",
-        "nativeBambuProjects": 4,
-        "nativeBambuPlates": 8,
-        "nativeBambuResult": "passed; four model colors used per plate, first layer 0.20 mm"
+        "automatedTests": 71,
+        "automatedResult": "passed (66 converter tests + 5 update tests)",
+        "endToEnd": "Installed 1.2.0 found a signed 1.2.1 on a local server, downloaded it, verified size/SHA-256/signature, replaced itself in place and reopened; a manifest with a changed version and the original signature was ignored and nothing was downloaded",
+        "packagedRuntime": "Extracted ZIP passed deep/strict signature verification"
       },
       "windows": {
-        "validationMethod": "GitHub Actions windows-2022 with installed Snapmaker Orca 2.4.0 and Bambu Studio 02.08.04.57",
-        "requiredChecks": [
-          "61 regression tests",
-          "frozen engine both directions using non-ASCII paths",
-          "percentage widths become 0.4 mm for A1 and X2D in frozen output",
-          "per-user installer and window launch",
-          "Windows file-drop message loads the project"
-        ],
-        "resultLocation": "Completed results are summarized in the public release notes. Detailed logs, selftest.json and screenshots are retained by the maintainer.",
-        "automatedTests": 61,
+        "automatedTests": 71,
         "automatedResult": "passed",
-        "frozenEngineResult": "passed; both directions, corrected A1/X2D widths, non-ASCII paths",
-        "installerAndDropResult": "passed"
+        "frozenEngineResult": "passed (unchanged checks from 1.1.8)",
+        "installerAndDropResult": "passed",
+        "updateResult": "passed: installed app found a signed update on a local server, downloaded and verified it, reinstalled quietly for the current user and reopened (GitHub Actions Windows build #13)"
       },
       "compatibilityDetails": "COMPATIBILITY.md",
       "limitations": [
-        "Creality/Anycubic coverage is limited generated samples",
-        "Windows native slice previews not tested",
-        "No physical print",
-        "No tester greater-than-four-color project supplied",
-        "Not Developer ID signed/notarized; Windows unsigned"
+        "Creality Print and Anycubic Slicer Next inputs remain experimental",
+        "Older Anycubic Slicer not supported",
+        "No new native slicing or physical print validation in this UI update",
+        "Destination slicers installed separately"
       ],
       "previousReleaseValidation": {
-        "app": "MakerBridge 1.1.3 Beta",
-        "date": "2026-10-11",
-        "releaseStatus": "Experimental prerelease",
-        "automatedTests": 54,
-        "automatedResult": "passed",
-        "warning": "The original reported 3MF was not supplied. This update may still have issues. Final U1 slicing of the experimental path is not verified; no physical print performed.",
-        "newCoverage": [
-          "plate selection and translated layout",
-          "shared components and repeated object instances",
-          "paint subdivision/extension codes and palette/color correspondence",
-          "support/part/process reference remapping",
-          "missing palette references rejected in both directions",
-          "five referenced colors rejected without output",
-          "unsupported custom layer data refused",
-          "Bambu filament-variant temperatures",
-          "original and existing output protection"
-        ],
-        "nativeValidation": {
-          "generatedModel": "Two plates, eight palette entries; red/green on plate 1, purple/brown on plate 2",
-          "BambuStudio": "02.08.04.57",
-          "method": "Bambu project \u2192 U1 selected plate \u2192 Bambu X1 Carbon \u2192 native CLI slice",
-          "results": [
-            {
-              "plate": 1,
-              "result": "passed",
-              "usedColors": [
-                "#23B541",
-                "#ED1717"
-              ],
-              "gcodeBytes": 381606
-            },
-            {
-              "plate": 2,
-              "result": "passed",
-              "usedColors": [
-                "#3A2222",
-                "#BA27D4"
-              ],
-              "gcodeBytes": 378537
-            }
-          ],
-          "U1Slice": "Not confirmed; prior Snapmaker CLI attempts crashed in GUI_App::filaments_cnt / PartPlate::get_extruders_under_cli."
-        },
-        "guiChecks": [
-          "1.1.3 Beta badge and app icon visible",
-          "generated eight-color project loaded",
-          "plate picker switched to plate 2 with purple/brown mapped to tools 1/2",
-          "save dialog included selected plate number",
-          "GUI output verified as one plate, correct colors and four U1 hardware nozzles"
-        ],
-        "limitations": [
-          "new plate selection only for MakerWorld \u2192 U1",
-          "up to four referenced filaments per selected plate including defaults and support assignments",
-          "experimental selection refuses custom layer profiles/ranges and 3MF material/texture resources",
-          "reverse remains up to four real filament slots",
-          "real customer file untested",
-          "clean second Mac untested",
-          "no physical print",
-          "not Developer ID signed or notarized"
-        ],
-        "bundledRuntime": {
-          "python": "3.13.16",
-          "architecture": "arm64",
-          "minimumMacOS": "13.0",
-          "externalPythonRequired": false,
-          "releaseChecks": [
-            "deep strict signature passed",
-            "frozen helper runs with no Python PATH",
-            "eight-color inspection and plate-2 U1 conversion passed",
-            "P2S reverse conversion passed",
-            "missing-palette input refused without output"
-          ]
-        },
-        "priorReleaseValidation": "1.1.2 native slicer results are historical and documented in README.md and CHANGELOG.md; not claimed as new 1.1.3 U1 slice results.",
+        "app": "MakerBridge 1.1.7 Beta",
+        "date": "2026-10-14",
         "developer": "Brian Mayes",
-        "feedback": "brian_mayes@me.com",
-        "windows": {
-          "app": "MakerBridge 1.1.5 Beta for Windows",
-          "date": "2026-10-12",
-          "environment": "GitHub Actions windows-2022 (Windows Server 2022, x64), Python 3.13, default Windows text encoding",
-          "slicers": {
-            "SnapmakerOrca": "2.4.0 (official Windows installer, silent install to C:\\Program Files\\Snapmaker_Orca)",
-            "BambuStudio": "02.08.04.57 (official Windows installer, silent install to C:\\Program Files\\Bambu Studio)"
-          },
-          "automatedTests": 54,
+        "feedback": "hello@printroomhq.com",
+        "releaseStatus": "Beta",
+        "mac": {
+          "automatedTests": 66,
           "automatedResult": "passed",
-          "slicerDiscovery": "both found without configuration; versions read from the programs match the Mac app's format",
-          "builtAppSelfTest": "installed app's frozen engine: status both directions; inspect and convert 'Caf\u00e9 cube \u2013 4 colors.3mf' to U1, then to Bambu Lab A1 and X2D \u2014 all passed",
-          "installer": "per-user silent install succeeded; window opened from Start-menu target and via a .3mf argument (screenshots)",
-          "limitations": [
-            "not yet run on a tester's Windows PC",
-            "Windows on ARM untested (x64 build, should run under emulation)",
-            "unsigned: SmartScreen warning on first run",
-            "no physical print"
+          "case": "Locally supplied five-plate Bambu project with five saved filament slots and three referenced slots; all five plates retained.",
+          "nativeU1Import": "Snapmaker Orca 2.4.0 displayed all five populated plates; prime-tower proximity warning remains.",
+          "nativeU1Slice": "Not verified: installed Snapmaker command-line slicer crashes; imported layout was inspected in the GUI.",
+          "nativeBambuSlice": "Passed: all five synthetic round-trip P1S plates sliced in Bambu Studio 02.08.04.57",
+          "packagedRuntime": "Extracted ZIP passed deep/strict signature verification; frozen engine passed both directions with external Python disabled"
+        },
+        "windows": {
+          "requiredChecks": [
+            "66 automated tests",
+            "frozen engine with five plates and unused filament slots",
+            "A1/X2D width units and both conversion directions",
+            "per-user installation and file drop"
           ],
-          "dragAndDrop": "installed app sent a Windows file-drop message (WM_DROPFILES, as File Explorer produces) for a non-ASCII-named project; it loaded the project (checked automatically, screenshot kept). A physical mouse drag has not been tried."
+          "resultLocation": "Completed build results are summarized in release notes.",
+          "automatedTests": 66,
+          "automatedResult": "passed",
+          "frozenEngineResult": "passed: five plates, unused slots, both directions, A1/X2D widths, non-ASCII paths",
+          "installerAndDropResult": "passed"
+        },
+        "limitations": [
+          "A whole project using more than four filaments still uses experimental single-plate selection",
+          "Mixed/virtual filaments and 3MF material/texture resources are not automatically compacted",
+          "No physical print performed",
+          "Unsigned beta distribution; slicers installed separately"
+        ],
+        "previousReleaseValidation": {
+          "app": "MakerBridge 1.1.6 Beta",
+          "date": "2026-10-13",
+          "developer": "Brian Mayes",
+          "feedback": "hello@printroomhq.com",
+          "releaseStatus": "Beta; additional slicer imports experimental",
+          "mac": {
+            "automatedTests": 61,
+            "automatedResult": "passed",
+            "archiveConversionChecks": 16,
+            "archiveResult": "passed",
+            "nativeBambuStudio": "02.08.04.57",
+            "nativeBambuProjects": 4,
+            "nativeBambuPlates": 8,
+            "nativeBambuResult": "passed; four model colors used per plate, first layer 0.20 mm"
+          },
+          "windows": {
+            "validationMethod": "GitHub Actions windows-2022 with installed Snapmaker Orca 2.4.0 and Bambu Studio 02.08.04.57",
+            "requiredChecks": [
+              "61 regression tests",
+              "frozen engine both directions using non-ASCII paths",
+              "percentage widths become 0.4 mm for A1 and X2D in frozen output",
+              "per-user installer and window launch",
+              "Windows file-drop message loads the project"
+            ],
+            "resultLocation": "Completed results are summarized in the public release notes. Detailed logs, selftest.json and screenshots are retained by the maintainer.",
+            "automatedTests": 61,
+            "automatedResult": "passed",
+            "frozenEngineResult": "passed; both directions, corrected A1/X2D widths, non-ASCII paths",
+            "installerAndDropResult": "passed"
+          },
+          "compatibilityDetails": "COMPATIBILITY.md",
+          "limitations": [
+            "Creality/Anycubic coverage is limited generated samples",
+            "Windows native slice previews not tested",
+            "No physical print",
+            "No tester greater-than-four-color project supplied",
+            "Not Developer ID signed/notarized; Windows unsigned"
+          ],
+          "previousReleaseValidation": {
+            "app": "MakerBridge 1.1.3 Beta",
+            "date": "2026-10-11",
+            "releaseStatus": "Experimental prerelease",
+            "automatedTests": 54,
+            "automatedResult": "passed",
+            "warning": "The original reported 3MF was not supplied. This update may still have issues. Final U1 slicing of the experimental path is not verified; no physical print performed.",
+            "newCoverage": [
+              "plate selection and translated layout",
+              "shared components and repeated object instances",
+              "paint subdivision/extension codes and palette/color correspondence",
+              "support/part/process reference remapping",
+              "missing palette references rejected in both directions",
+              "five referenced colors rejected without output",
+              "unsupported custom layer data refused",
+              "Bambu filament-variant temperatures",
+              "original and existing output protection"
+            ],
+            "nativeValidation": {
+              "generatedModel": "Two plates, eight palette entries; red/green on plate 1, purple/brown on plate 2",
+              "BambuStudio": "02.08.04.57",
+              "method": "Bambu project → U1 selected plate → Bambu X1 Carbon → native CLI slice",
+              "results": [
+                {
+                  "plate": 1,
+                  "result": "passed",
+                  "usedColors": [
+                    "#23B541",
+                    "#ED1717"
+                  ],
+                  "gcodeBytes": 381606
+                },
+                {
+                  "plate": 2,
+                  "result": "passed",
+                  "usedColors": [
+                    "#3A2222",
+                    "#BA27D4"
+                  ],
+                  "gcodeBytes": 378537
+                }
+              ],
+              "U1Slice": "Not confirmed; prior Snapmaker CLI attempts crashed in GUI_App::filaments_cnt / PartPlate::get_extruders_under_cli."
+            },
+            "guiChecks": [
+              "1.1.3 Beta badge and app icon visible",
+              "generated eight-color project loaded",
+              "plate picker switched to plate 2 with purple/brown mapped to tools 1/2",
+              "save dialog included selected plate number",
+              "GUI output verified as one plate, correct colors and four U1 hardware nozzles"
+            ],
+            "limitations": [
+              "new plate selection only for MakerWorld → U1",
+              "up to four referenced filaments per selected plate including defaults and support assignments",
+              "experimental selection refuses custom layer profiles/ranges and 3MF material/texture resources",
+              "reverse remains up to four real filament slots",
+              "real customer file untested",
+              "clean second Mac untested",
+              "no physical print",
+              "not Developer ID signed or notarized"
+            ],
+            "bundledRuntime": {
+              "python": "3.13.16",
+              "architecture": "arm64",
+              "minimumMacOS": "13.0",
+              "externalPythonRequired": false,
+              "releaseChecks": [
+                "deep strict signature passed",
+                "frozen helper runs with no Python PATH",
+                "eight-color inspection and plate-2 U1 conversion passed",
+                "P2S reverse conversion passed",
+                "missing-palette input refused without output"
+              ]
+            },
+            "priorReleaseValidation": "1.1.2 native slicer results are historical and documented in README.md and CHANGELOG.md; not claimed as new 1.1.3 U1 slice results.",
+            "developer": "Brian Mayes",
+            "feedback": "hello@printroomhq.com",
+            "windows": {
+              "app": "MakerBridge 1.1.5 Beta for Windows",
+              "date": "2026-10-12",
+              "environment": "GitHub Actions windows-2022 (Windows Server 2022, x64), Python 3.13, default Windows text encoding",
+              "slicers": {
+                "SnapmakerOrca": "2.4.0 (official Windows installer, silent install to C:\\Program Files\\Snapmaker_Orca)",
+                "BambuStudio": "02.08.04.57 (official Windows installer, silent install to C:\\Program Files\\Bambu Studio)"
+              },
+              "automatedTests": 54,
+              "automatedResult": "passed",
+              "slicerDiscovery": "both found without configuration; versions read from the programs match the Mac app's format",
+              "builtAppSelfTest": "installed app's frozen engine: status both directions; inspect and convert 'Café cube – 4 colors.3mf' to U1, then to Bambu Lab A1 and X2D — all passed",
+              "installer": "per-user silent install succeeded; window opened from Start-menu target and via a .3mf argument (screenshots)",
+              "limitations": [
+                "not yet run on a tester's Windows PC",
+                "Windows on ARM untested (x64 build, should run under emulation)",
+                "unsigned: SmartScreen warning on first run",
+                "no physical print"
+              ],
+              "dragAndDrop": "installed app sent a Windows file-drop message (WM_DROPFILES, as File Explorer produces) for a non-ASCII-named project; it loaded the project (checked automatically, screenshot kept). A physical mouse drag has not been tried."
+            }
+          }
         }
       }
     }

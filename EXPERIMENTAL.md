@@ -16,10 +16,22 @@ For example, a project may use red/green on plate 1 and purple/brown from slots 
 
 The original file is never overwritten. Keep it for comparison. Older 1.1.2 downloads remain available under Releases if you need to return to that version.
 
+## Combining colors in 1.2.1
+
+U1 has four toolheads. When the selected plate uses more than four colors, MakerBridge no longer stops: it shows each color's approximate share of the printed surface and suggests merges, repeatedly folding the least-used color into the closest remaining one (by a perceptual RGB distance) until four are left. You can change any merge before converting.
+
+A combined color keeps its painting. Every painted face, object or part assignment and support setting that used it is moved to the kept color's toolhead, so it prints in that color. Nothing is deleted from the mesh. The report lists each merge, and a material mismatch is called out. Surface shares are an estimate: painted sub-triangles count equally, and unpainted faces count toward their part's or object's filament.
+
+Tested with synthetic models (paint, support and process references, invalid choices) and a tester-supplied six-color H2D project, where green (0.8%) and gray (under 0.1%) were combined into black.
+
+## Variable layer heights in 1.2.2
+
+Bambu Studio and Orca key per-object layer files (`layer_heights_profile.txt`, `layer_config_ranges.xml`, `brim_ear_points.txt`, `cut_information.xml`) by each object's place in the build list. Plate selection keeps the selected plate's entries and renumbers them. Tested with a two-plate H2D project built from a tester-supplied helmet plus a test block: the block moved from object 2 to object 1, and a P1S reverse conversion of its plate sliced in Bambu Studio with the variable profile (415 layers instead of 200) and the height range's color from 20 to 30 mm.
+
 ## Known limits
 
-- At most four referenced filaments on the selected plate. Object defaults and support assignments count even when unused by a particular slice; this conservative count may refuse some otherwise printable plates.
-- Custom layer-height profiles and layer-range overrides are not supported by this experimental path. Export the desired plate separately in Bambu Studio, reduce unused palette entries there, and use the ordinary conversion path instead.
+- At most four toolheads on the selected plate. Above four, colors must be combined (1.2.1). Object defaults and support assignments count even when unused by a particular slice, so they can appear in the combine list with a 0% share.
+- Custom layer-height profiles, height-range modifiers, brim ears and cut info are kept for the selected plate's objects (1.2.2). They are renumbered to the objects' new order; a range's filament follows the new toolhead numbering. A per-object file that can't be read stops the conversion.
 - Virtual/mixed filament definitions, 3MF material/texture resources, ambiguous plate assignments and broken component/paint references stop conversion with an explanation.
 - Existing conversions with four or fewer project slots retain their multi-plate and variable-layer behavior. Reverse conversion still allows up to four real filament slots.
 - No physical print or clean second-Mac test has been performed. Matching nozzle size, plate fit, temperatures and collision checks remain necessary in the slicer.
@@ -34,4 +46,4 @@ Paint encoding was checked against the official [Snapmaker TriangleSelector impl
 
 ## Feedback
 
-Send feedback to **brian_mayes@me.com** with MakerBridge and slicer versions, the selected plate, expected colors and what happened. Screenshots of the original and converted project plus the conversion report are useful. Share a model only if you have permission; a simplified example reproducing the problem is fine. This release is not confirmation that the original reported lost-color issue is fully fixed.
+Send feedback to **hello@printroomhq.com** with MakerBridge and slicer versions, the selected plate, expected colors and what happened. Screenshots of the original and converted project plus the conversion report are useful. Share a model only if you have permission; a simplified example reproducing the problem is fine. This release is not confirmation that the original reported lost-color issue is fully fixed.

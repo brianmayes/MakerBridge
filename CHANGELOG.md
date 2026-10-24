@@ -1,5 +1,30 @@
 # MakerBridge changelog
 
+## 1.2.2 Beta — October 24, 2026
+
+- **Variable layer heights in plate selection.** Converting one plate of a project that uses more than four colors now keeps the custom layer-height profiles, height-range modifiers, brim ears and cut info of that plate's objects. Before, these projects stopped with "Experimental plate selection does not yet support custom layer-height profiles or layer-range overrides", and Combine colors couldn't be used on them.
+- Bambu Studio and Orca number these per-object entries by each object's place in the build list, not by its ID. MakerBridge keeps only the selected plate's entries and renumbers them for the new file. A height range's filament follows the plate's new toolhead numbering and counts as one of the plate's colors, so it shows up in Combine colors.
+- A per-object file MakerBridge can't read stops the conversion with an explanation; nothing is guessed.
+- The update check now sends the app version, Mac or Windows, and a random ID the app makes on first launch, so printroomhq.com can count active copies by version. Nothing about the user, their computer or their files is sent.
+- Tested on a two-plate H2D project built from a tester's six-color helmet plus a test block, with a variable layer-height profile and a height-range color change. The block was object 2 in the source and object 1 in the output. Reverse-converted to a P1S, its plate sliced in Bambu Studio with 415 layers instead of 200 without the profile, and the range's color printed from exactly 20 to 30 mm. The helmet plate converted with green and gray combined into black, and its height range was kept. The Snapmaker Orca command-line slicer still crashes on this Mac, so check the U1 preview in the app.
+- Validation: 81 automated tests passed on Mac (5 new for per-object layer files, 1 for the update check).
+
+## 1.2.1 Beta — October 23, 2026
+
+- **Combine colors.** A plate that uses more than four colors no longer stops with an error. MakerBridge shows each color with roughly how much of the printed surface it covers, and suggests which colors to print with another color's toolhead: the least-used color goes to the closest remaining color, repeated until four are left. Each choice is a dropdown on Mac and Windows; **Use suggestion** puts the defaults back. Convert stays off until the plate fits four toolheads.
+- Combined colors keep their painting. Their painted faces, object and part assignments and support settings move to the kept color's toolhead together, and the conversion report and review notes list every merge with its surface share. A material mismatch (for example PETG printed as PLA) is called out.
+- One-plate projects no longer show the plate picker.
+- Command line: `--combine 3:2,5:2` prints source colors 3 and 5 with color 2's toolhead (3MF → U1 only).
+- Tested on a tester-supplied six-color H2D project: green (0.8% of the surface) and gray (under 0.1%) were combined into black, giving a four-color U1 project. Reverse-converted to a P1S, it sliced in Bambu Studio with all four colors (673 layers). The Snapmaker Orca command-line slicer still crashes on this Mac, so check the U1 preview in the app. The model itself is not bundled or published.
+- Validation: 76 automated tests passed on Mac (5 new for combining colors).
+
+## 1.2.0 Beta — October 21, 2026
+
+- **Updates inside the app.** MakerBridge checks printroomhq.com for a new version when it opens (and from **Check for updates** at the bottom of the window, or MakerBridge › Check for Updates… on Mac). When one is out, a bar offers **Update**: Mac swaps the app in place and reopens it; Windows downloads the installer, reinstalls quietly for the current user and reopens. Portable Windows copies get a link to the download page instead.
+- Every update is checked before it's used: the version information must carry the publisher's Ed25519 signature, and the downloaded file must match the signed size and SHA-256. Anything else is ignored.
+- Feedback now goes to hello@printroomhq.com.
+- Conversion is unchanged from 1.1.8.
+
 ## 1.1.8 Beta — October 14, 2026
 
 - Clarified supported input slicers inside both Mac and Windows apps. The forward tab is now **3MF → U1**, with a persistent **Compatible inputs** card listing MakerWorld / Bambu Studio and experimental Creality Print / Anycubic Slicer Next.
@@ -64,7 +89,7 @@
 ## 1.1.1 Beta — October 10, 2026
 
 - Bundled Python 3.13.16 and required runtime libraries inside the Mac app. Testers no longer need to install Python, Xcode or developer tools.
-- Added a visible Beta label, developer credit for **Brian Mayes**, and a feedback link to **brian_mayes@me.com**.
+- Added a visible Beta label, developer credit for **Brian Mayes**, and a feedback link (now hello@printroomhq.com).
 - Documented slicer requirements by conversion direction, setup steps and first-launch approval for this locally signed, non-notarized beta.
 - Included runtime license notices and verified the bundled engine after relocation with Python search paths disabled.
 
@@ -74,4 +99,4 @@
 - Added visible app version information and handling for dual-nozzle and H2C hotend profiles.
 - Validated four-color sample exports by slicing for all 14 Bambu targets at 0.4 mm. No physical print or MakerWorld upload was performed.
 
-Developed by Brian Mayes. Feedback: [brian_mayes@me.com](mailto:brian_mayes@me.com).
+Developed by Brian Mayes. Feedback: [hello@printroomhq.com](mailto:hello@printroomhq.com).
