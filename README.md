@@ -1,4 +1,4 @@
-# MakerBridge 1.2.2 Beta — for Mac and Windows
+# MakerBridge 1.2.3 Beta — for Mac and Windows
 
 A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The **3MF → U1** tab also accepts compatible editable projects from **Creality Print** and **Anycubic Slicer Next** as experimental inputs. Older Anycubic Slicer variants are not supported. The current version appears beside the app name and in About MakerBridge.
 
@@ -14,6 +14,12 @@ Download MakerBridge from **[printroomhq.com/makerbridge](https://printroomhq.co
 The page lists SHA-256 checksums for every download. Releases on GitHub stop at 1.1.8; newer versions are only on printroomhq.com.
 
 From 1.2.0 on, MakerBridge checks printroomhq.com for a new version when it opens, or when you click **Check for updates** at the bottom of the window. When one is out, a bar offers **Update**: the Mac app replaces itself and reopens; on Windows it downloads the installer, reinstalls for the current user and reopens. Every update must carry the publisher's signature and match its signed size and SHA-256. The check sends only the app version, Mac or Windows, and a random ID for that copy. To update by hand, download the new version from the website: on a Mac, replace the old app; on Windows, run the new MakerBridge-Windows-Setup.exe.
+
+## What's new in 1.2.3
+
+- **All plates.** When a project's colors don't fit the U1's four toolheads together, the plate menu now starts on **All plates · one file each**. One click saves every plate as its own U1 project (`Name-Plate1-U1.3mf`, `Name-Plate2-U1.3mf`, …), each with its own colors and painting. Before, you picked and converted each plate in turn.
+- A plate that uses more than four colors by itself gets the suggested combining, and the result says which colors were combined on which plate. To choose them yourself, pick that plate on its own.
+- Nothing is overwritten: if any of the files already exists, nothing is saved. A plate that can't be converted is skipped and named in the result.
 
 ## What's new in 1.2.2
 
@@ -117,7 +123,7 @@ This beta is locally signed, but **not Apple Developer ID signed or notarized**.
 
 1. Select **3MF → U1**.
 2. Drop an editable MakerWorld / Bambu Studio project `.3mf` onto the window, or click to choose it. Creality Print and Anycubic Slicer Next projects use this same tab, with experimental compatibility; see [COMPATIBILITY.md](COMPATIBILITY.md).
-3. Check the colors and nozzle. For projects with more than four palette entries, choose **Plate to convert**; the displayed colors show the selected plate’s new toolhead mapping. Save other plates separately. If the plate itself uses more than four colors, choose which ones to **combine** (MakerBridge suggests the least-used ones). Projects with up to four palette entries retain their original slots and all plates.
+3. Check the colors and nozzle. For projects with more than four palette entries, MakerBridge starts on **All plates · one file each**, which saves every plate as its own U1 project; or choose one plate, and the displayed colors show its new toolhead mapping. If the plate itself uses more than four colors, choose which ones to **combine** (MakerBridge suggests the least-used ones). Projects with up to four palette entries retain their original slots and all plates.
 4. Click **Convert & save U1 project** and choose a new filename.
 5. Open the result in **Snapmaker Orca**, review the plates, supports, filament assignments and temperatures, then slice and inspect the preview.
 

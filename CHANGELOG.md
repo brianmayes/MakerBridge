@@ -1,5 +1,13 @@
 # MakerBridge changelog
 
+## 1.2.3 Beta — October 26, 2026
+
+- **All plates.** When a project's colors don't fit the U1's four toolheads together, the plate menu now starts on **All plates · one file each**. One click saves every plate as its own U1 project, named like a single plate: `Name-Plate1-U1.3mf`, `Name-Plate2-U1.3mf`, and so on. Each plate keeps its own colors and painting. Before, you had to pick and convert each plate in turn.
+- A plate that uses more than four colors by itself gets the suggested combining: the least-used colors are printed with the closest remaining color. The result says which colors were combined on which plate. To choose them yourself, pick that plate on its own.
+- Nothing is written if any of the files already exists. A plate that can't be converted is skipped, and the result says which one and why.
+- Command line: `--all-plates` (3MF → U1 only).
+- Validation: 83 automated tests passed on Mac (2 new for all plates). The Windows app was checked headless on Mac: it opens on All plates, saves both plates of a two-plate eight-color test project, and names the combined colors.
+
 ## 1.2.2 Beta — October 24, 2026
 
 - **Variable layer heights in plate selection.** Converting one plate of a project that uses more than four colors now keeps the custom layer-height profiles, height-range modifiers, brim ears and cut info of that plate's objects. Before, these projects stopped with "Experimental plate selection does not yet support custom layer-height profiles or layer-range overrides", and Combine colors couldn't be used on them.

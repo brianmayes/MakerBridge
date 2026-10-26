@@ -10,7 +10,7 @@ This path was tested with a locally supplied five-plate project using three of f
 
 ## What to try when more than four filaments are actually referenced
 
-Open a MakerWorld/Bambu project that references more than four filaments across its plates. Choose **Plate to convert**, check the displayed colors, and save a new U1 project. Each output contains only that plate. Repeat for other plates. In Snapmaker Orca, check the colored model, toolhead assignments, supports and every relevant part of the sliced preview before printing.
+Open a MakerWorld/Bambu project that references more than four filaments across its plates. Leave **Plate to convert** on **All plates · one file each** to save every plate as its own U1 project in one step (1.2.3), or choose one plate and check its displayed colors. Each output contains only its plate. In Snapmaker Orca, check the colored model, toolhead assignments, supports and every relevant part of the sliced preview before printing.
 
 For example, a project may use red/green on plate 1 and purple/brown from slots 5/8 on plate 2. Selecting plate 2 exports purple/brown as tools 1/2, with the paint references remapped accordingly. Four physical U1 nozzles remain configured. This feature does not add more than four simultaneous physical filaments.
 
