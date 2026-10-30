@@ -1,4 +1,4 @@
-# MakerBridge 1.2.3 Beta — for Mac and Windows
+# MakerBridge 1.2.4 Beta — for Mac and Windows
 
 A local app for Mac and Windows for converting editable 3MF projects in both directions: **MakerWorld / Bambu Studio ↔ Snapmaker U1**. The **3MF → U1** tab also accepts compatible editable projects from **Creality Print** and **Anycubic Slicer Next** as experimental inputs. Older Anycubic Slicer variants are not supported. The current version appears beside the app name and in About MakerBridge.
 
@@ -14,6 +14,13 @@ Download MakerBridge from **[printroomhq.com/makerbridge](https://printroomhq.co
 The page lists SHA-256 checksums for every download. Releases on GitHub stop at 1.1.8; newer versions are only on printroomhq.com.
 
 From 1.2.0 on, MakerBridge checks printroomhq.com for a new version when it opens, or when you click **Check for updates** at the bottom of the window. When one is out, a bar offers **Update**: the Mac app replaces itself and reopens; on Windows it downloads the installer, reinstalls for the current user and reopens. Every update must carry the publisher's signature and match its signed size and SHA-256. The check sends only the app version, Mac or Windows, and a random ID for that copy. To update by hand, download the new version from the website: on a Mac, replace the old app; on Windows, run the new MakerBridge-Windows-Setup.exe.
+
+## What's new in 1.2.4
+
+- **Works with Snapmaker Orca 2.4.1.** The new Snapmaker release saves some of its U1 profiles in a way MakerBridge couldn't read, so every conversion stopped with "Unexpected UTF-8 BOM". Fixed in both directions.
+- **U1 projects saved in Snapmaker Orca 2.4.1 convert to Bambu properly.** Variable layer heights land on the right objects, and the project picture shows up in Bambu Studio.
+- **U1 projects downloaded from MakerWorld convert to Bambu.** Before, they stopped with "Plate membership refers to missing model instances."
+- Settings Snapmaker added in 2.4.1 (like paint penetration layers) come from the printer's own profile. Snapmaker Orca 2.4.0 still works.
 
 ## What's new in 1.2.3
 
@@ -99,7 +106,7 @@ See [CHANGELOG.md](CHANGELOG.md) for the release history.
 
 **Install both slicers only if you want both conversion directions.** The source slicer is not needed just to convert an existing compatible 3MF. On a Mac, install them in **Applications** (your user Applications folder is also supported). On Windows, install them normally; if a slicer lives somewhere unusual (a portable copy, another drive), click **Choose folder…** at the bottom of MakerBridge and pick the folder that contains it. MakerBridge reads native printer, process and material profiles from the installed destination slicer; the slicer does not need to be running during conversion.
 
-Tested with **Snapmaker Orca 2.4.0** and **Bambu Studio 02.08.04.57**. Printer/nozzle choices depend on profiles available in your installed version. Use Snapmaker Orca for U1 exports; Snapmaker Luban and the general OrcaSlicer app are not substitutes for this build's profile lookup.
+Tested with **Snapmaker Orca 2.4.1** (2.4.0 still works) and **Bambu Studio 02.08.04.57** (02.08.04.61 on Mac). Printer/nozzle choices depend on profiles available in your installed version. Use Snapmaker Orca for U1 exports; Snapmaker Luban and the general OrcaSlicer app are not substitutes for this build's profile lookup.
 
 **Python is included inside MakerBridge. You don't need to install Python or any developer tools.** The slicers are separate downloads and are not included.
 
@@ -180,6 +187,8 @@ Your original is never overwritten. Existing output files are protected too: cho
 - The bundled app is Apple silicon only. Python 3.13.16 and its required libraries travel with the app; it does not use a system Python installation.
 
 ## Validation
+
+**1.2.4:** 96 automated tests passed on Mac against Snapmaker Orca 2.4.1 and Bambu Studio 02.08.04.61 (13 new), and against Snapmaker Orca 2.4.0 profiles too. For the first time the results were also sliced in the real slicers' command-line versions (Snapmaker Orca 2.4.1 and Bambu Studio 02.08.04.57, on Linux): generated test projects in every direction, all 14 Bambu printers, 0.2–0.8 mm nozzles, plate selection, combining colors, all plates, and U1 projects saved by Snapmaker Orca 2.4.1 itself. Variable layer heights changed the layer count in both slicers, the same way there and back. Real MakerWorld projects (P2S, X2D, A1 and H2C projects, a 36-plate P2S kit and two U1 toolboxes) converted in both directions on Mac and sliced; plates that don't fit the target or print one object at a time too close together for the U1 are called out by the slicer, as before.
 
 **1.1.8:** All 66 automated checks passed on Mac and Windows. Reviewed the new compatibility card in both platforms’ empty and loaded states, and verified Mac reverse-direction guidance. Packaged checks passed in both directions; Windows installation and file-drop checks passed. No new native-slicer or physical-print testing was performed for this interface update.
 

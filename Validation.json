@@ -1,33 +1,53 @@
 {
-  "app": "MakerBridge 1.2.3 Beta",
-  "date": "2026-10-26",
+  "app": "MakerBridge 1.2.4 Beta",
+  "date": "2026-10-29",
   "developer": "Brian Mayes",
   "feedback": "hello@printroomhq.com",
   "releaseStatus": "Beta",
-  "scope": "All plates: a project whose colors don't fit four toolheads together can be saved as one U1 project per plate in one step (Name-PlateN-U1.3mf); plates over four colors get the suggested combining, listed in the result.",
+  "scope": "Snapmaker Orca 2.4.1 support: reads profiles saved with a UTF-8 byte order mark; turns 2.4.1's object-id layer-height file, cover-picture relationships and 3MF version key into the forms Bambu Studio reads; new 2.4.1 settings come from the destination preset; package relationship files keep their default namespace when rewritten. MakerWorld-style <item></item> build items are read in both directions.",
   "mac": {
-    "automatedTests": 83,
-    "automatedResult": "passed (81 previous + 2 all-plates tests)",
-    "testProject": "Generated two-plate, eight-color project with paint, support and wall assignments (both plates need combining)",
-    "windowsAppLogic": "Checked headless on Mac with Tk: opens on All plates, saves bust-Plate1-U1.3mf and bust-Plate2-U1.3mf, summary names the combined colors, Open button names Plate 1",
-    "nativeU1Slice": "Not verified: Snapmaker Orca 2.4.0 command-line slicer still crashes on this Mac"
+    "automatedTests": 96,
+    "automatedResult": "passed against installed Snapmaker Orca 2.4.1 and Bambu Studio 02.08.04.61 with /usr/bin/python3 and the build's Python 3.13 (83 previous + 13 for 2.4.1 and MakerWorld build items); also passed against Snapmaker Orca 2.4.0 profiles",
+    "realProjects": "P2S, X2D, A1 and H2C MakerWorld projects, a 36-plate P2S kit (all plates) and two MakerWorld U1 toolboxes converted in both directions with the patched engine on Mac (15 of 15). Not bundled or published.",
+    "nativeU1Slice": "Passed in Snapmaker Orca 2.4.1's command-line slicer (Linux AppImage): generated projects (keep/standard/model first layer, 0.2-0.8 mm nozzles, variable layers, one plate, combined colors, all plates), real MakerWorld projects, and U1 projects saved by Snapmaker Orca 2.4.1 itself. Plates 30 and 31 of the P2S kit print by object and conflict with the U1's larger toolhead clearance, as the slicer reports.",
+    "nativeBambuSlice": "Passed in Bambu Studio 02.08.04.57's command-line slicer for all 14 Bambu printers from a Snapmaker Orca 2.4.1-saved U1 project; variable layer heights from a 2.4.1 object-id layer file gave the same layer counts as the forward direction (147/132 vs 105/100 flat)",
+    "snapmakerOrca240": "Its command-line slicer crashes on every file here, 1.2.3 output included; 1.2.4 output for 2.4.0 matches 1.2.3 byte for byte apart from the report"
   },
   "windows": {
-    "automatedTests": 83,
-    "automatedResult": "passed against installed Snapmaker Orca 2.4.0 and Bambu Studio 02.08.04.57, including both all-plates tests (GitHub Actions run 40314562053)",
-    "frozenEngineResult": "passed: both directions, non-ASCII paths",
-    "installerAndDropResult": "passed",
-    "updateResult": "passed: installed app found a signed update on a local server, downloaded and verified it, reinstalled quietly and reopened",
-    "allPlatesInApp": "not run on Windows itself: the CI's sample project fits four tools, so it doesn't show the All plates choice; the Tk app's All plates path was checked headless on Mac"
+    "automatedTests": 96,
+    "automatedResult": "passed against installed Snapmaker Orca 2.4.1 and Bambu Studio 02.08.04.57 (GitHub Actions run 40976613225)",
+    "frozenEngineResult": "passed: inspect, to U1, to A1 and to X2D with a non-ASCII file name; status shows Snapmaker Orca 2.4.1 and Bambu Studio 02.08.04.57 connected",
+    "installerAndDropResult": "passed"
   },
   "compatibilityDetails": "COMPATIBILITY.md",
   "limitations": [
-    "No native U1 slice or physical print of the test project",
+    "No physical print of the test projects",
     "Combined colors print in the kept color; no more than four physical filaments",
     "Creality Print and Anycubic Slicer Next inputs remain experimental",
-    "Destination slicers installed separately"
+    "Destination slicers installed separately",
+    "Models are never scaled or rearranged: plates bigger than the target bed, or printed by object too close for the target's toolhead, need rearranging in the slicer"
   ],
   "previousReleaseValidation": [
+    {
+      "app": "MakerBridge 1.2.3 Beta",
+      "date": "2026-10-26",
+      "scope": "All plates: a project whose colors don't fit four toolheads together can be saved as one U1 project per plate in one step (Name-PlateN-U1.3mf); plates over four colors get the suggested combining, listed in the result.",
+      "mac": {
+        "automatedTests": 83,
+        "automatedResult": "passed (81 previous + 2 all-plates tests)",
+        "testProject": "Generated two-plate, eight-color project with paint, support and wall assignments (both plates need combining)",
+        "windowsAppLogic": "Checked headless on Mac with Tk: opens on All plates, saves bust-Plate1-U1.3mf and bust-Plate2-U1.3mf, summary names the combined colors, Open button names Plate 1",
+        "nativeU1Slice": "Not verified: Snapmaker Orca 2.4.0 command-line slicer still crashes on this Mac"
+      },
+      "windows": {
+        "automatedTests": 83,
+        "automatedResult": "passed against installed Snapmaker Orca 2.4.0 and Bambu Studio 02.08.04.57, including both all-plates tests (GitHub Actions run 40314562053)",
+        "frozenEngineResult": "passed: both directions, non-ASCII paths",
+        "installerAndDropResult": "passed",
+        "updateResult": "passed: installed app found a signed update on a local server, downloaded and verified it, reinstalled quietly and reopened",
+        "allPlatesInApp": "not run on Windows itself: the CI's sample project fits four tools, so it doesn't show the All plates choice; the Tk app's All plates path was checked headless on Mac"
+      }
+    },
     {
       "app": "MakerBridge 1.2.2 Beta",
       "date": "2026-10-24",

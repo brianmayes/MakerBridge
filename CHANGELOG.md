@@ -1,5 +1,14 @@
 # MakerBridge changelog
 
+## 1.2.4 Beta — October 29, 2026
+
+- **Works with Snapmaker Orca 2.4.1.** Snapmaker's new release saves two of its U1 profile files with an invisible marker at the start (a UTF-8 byte order mark). MakerBridge refused to read them, so every conversion stopped with "Unexpected UTF-8 BOM", in both directions. It now reads them either way.
+- **U1 projects saved in Snapmaker Orca 2.4.1 convert to Bambu properly.** 2.4.1 numbers variable layer heights a new way (by the object's ID instead of its place in the list), and names its cover pictures and 3MF version in its own words. MakerBridge now turns all of that back into the form Bambu Studio reads, so custom layer heights land on the right objects and the project picture shows up. Picking one plate from a 2.4.1 project reads the new numbering too.
+- **U1 projects downloaded from MakerWorld convert to Bambu.** MakerWorld writes a project's object list in a slightly different form than the slicers do, and MakerBridge stopped with "Plate membership refers to missing model instances." Both directions read it now.
+- **New 2.4.1 settings come from the printer's own profile.** Paint penetration layers and the other settings Snapmaker added in 2.4.1 are taken from the installed U1 preset (and from the Bambu preset going the other way), not copied across. Snapmaker Orca 2.4.0 keeps working as before.
+- Fixed a related problem: when MakerBridge rewrote a 3MF's internal file list, Bambu Studio couldn't open the result.
+- Validation: 96 automated tests passed on Mac against Snapmaker Orca 2.4.1 and Bambu Studio 02.08.04.61 (13 new), and against Snapmaker Orca 2.4.0 profiles too. For the first time the results were also sliced in the real slicers' command-line versions (Snapmaker Orca 2.4.1 and Bambu Studio 02.08.04.57, on Linux): generated test projects in every direction, all 14 Bambu printers, 0.2–0.8 mm nozzles, plate selection, combining colors, all plates, and U1 projects saved by Snapmaker Orca 2.4.1 itself. Variable layer heights changed the layer count in both slicers, the same way there and back. Real MakerWorld projects (P2S, X2D, A1 and H2C projects, a 36-plate P2S kit and two U1 toolboxes) converted in both directions on Mac and sliced; plates that don't fit the target or print one object at a time too close together for the U1 are called out by the slicer, as before.
+
 ## 1.2.3 Beta — October 26, 2026
 
 - **All plates.** When a project's colors don't fit the U1's four toolheads together, the plate menu now starts on **All plates · one file each**. One click saves every plate as its own U1 project, named like a single plate: `Name-Plate1-U1.3mf`, `Name-Plate2-U1.3mf`, and so on. Each plate keeps its own colors and painting. Before, you had to pick and convert each plate in turn.
